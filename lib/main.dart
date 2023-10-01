@@ -13,8 +13,8 @@ class PhoneRepairService199App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorSchemeSeed: Colors.blue,
         useMaterial3: true,
-        colorSchemeSeed: Colors.indigo,
       ),
       home: const MainScreen(),
     );
