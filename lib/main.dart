@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_repair_service_199/main_router.dart';
 import 'package:phone_repair_service_199/screens/screen_layer.dart';
 
 void main() {
@@ -10,13 +11,13 @@ class PhoneRepairService199App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      routerConfig: MainRouter.router,
     );
   }
 }
