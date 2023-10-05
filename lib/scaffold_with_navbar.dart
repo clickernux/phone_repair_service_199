@@ -22,7 +22,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(LineIcons.home),
-          label: 'Home',
+          label: 'ပင်မ',
         ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.bookReader),
@@ -33,8 +33,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
           label: 'အပိုပစ္စည်း',
         ),
         BottomNavigationBarItem(
-          icon: Icon(LineIcons.infoCircle),
-          label: 'အကြောင်း',
+          icon: Icon(LineIcons.phone),
+          label: 'ဆက်သွယ်ရန်',
         ),
       ],
     );
