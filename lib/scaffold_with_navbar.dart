@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
 
-import 'util.dart';
-
 class ScaffoldWithNavBar extends StatelessWidget {
   const ScaffoldWithNavBar({super.key, required this.child});
   final Widget child;
@@ -11,15 +9,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: AppBar(
-      //     title: Text(Util.appNameMM),
-      //     titleTextStyle: Theme.of(context).textTheme.labelLarge,
-      //     actions: [
-      //       IconButton(onPressed: () {}, icon: const Icon(LineIcons.bell)),
-      //     ],
-      //   ),
-      // ),
       body: child,
       bottomNavigationBar: _buildBottomNavBar(context),
     );
