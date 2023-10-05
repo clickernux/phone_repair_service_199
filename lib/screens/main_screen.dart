@@ -24,8 +24,6 @@ class MainScreen extends StatelessWidget {
   }
 
   _buildbody(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
-
     return CustomScrollView(
       slivers: [],
     );
