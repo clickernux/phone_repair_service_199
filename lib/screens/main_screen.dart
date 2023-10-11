@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:line_icons/line_icons.dart';
@@ -103,6 +104,10 @@ class MainScreen extends StatelessWidget {
 
   void _login(BuildContext context) {
     // TODO: goto login screen
-    context.goNamed('login');
+    if (FirebaseAuth.instance.currentUser == null) {
+      context.goNamed('login');
+    } else {
+      context.goNamed('admin_panel');
+    }
   }
 }
