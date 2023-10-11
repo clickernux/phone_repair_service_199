@@ -29,6 +29,12 @@ class MainRouter {
                   name: 'login',
                   builder: (context, state) => const LoginScreen(),
                 ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'admin_panel',
+                  name: 'admin_panel',
+                  builder: (context, state) => const AdminPanelScreen(),
+                ),
               ]),
           GoRoute(
             path: '/blog',
