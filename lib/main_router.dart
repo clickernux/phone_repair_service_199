@@ -19,10 +19,17 @@ class MainRouter {
         builder: (context, state, child) => ScaffoldWithNavBar(child: child),
         routes: [
           GoRoute(
-            path: '/main',
-            name: 'main',
-            builder: (context, state) => const MainScreen(),
-          ),
+              path: '/main',
+              name: 'main',
+              builder: (context, state) => const MainScreen(),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'login',
+                  name: 'login',
+                  builder: (context, state) => const LoginScreen(),
+                ),
+              ]),
           GoRoute(
             path: '/blog',
             name: 'blog',
