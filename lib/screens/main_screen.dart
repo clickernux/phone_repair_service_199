@@ -25,24 +25,56 @@ class MainScreen extends StatelessWidget {
   }
 
   _buildbody(BuildContext context, TextTheme textTheme) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8, bottom: 8),
-                child: Text(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
                   'ကျွမ်းကျင်မှုဖြင့်သာ ဝန်ဆောင်မှုပေးသည်',
                   style: textTheme.labelSmall,
                 ),
+                const SizedBox(height: 8),
+                const BannerScroll(),
+              ],
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: ,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 16)),
+          SliverGrid.count(
+            crossAxisSpacing: 8,
+            crossAxisCount: 2,
+            mainAxisSpacing: 8,
+            children: [
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.red,
               ),
-              const BannerScroll(),
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.green,
+              ),
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.blue,
+              ),
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.black38,
+              ),
             ],
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }
