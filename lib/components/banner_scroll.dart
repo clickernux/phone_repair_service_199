@@ -8,12 +8,9 @@ class BannerScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: SizedBox(
-        height: 320,
-        child: _buildListView(context),
-      ),
+    return SizedBox(
+      height: 320,
+      child: _buildListView(context),
     );
   }
 
