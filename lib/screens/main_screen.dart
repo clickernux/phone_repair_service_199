@@ -50,7 +50,7 @@ class MainScreen extends StatelessWidget {
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverToBoxAdapter(
             child: Container(
-              height: 200,
+              height: 240,
               color: Colors.blue,
               child: const Center(
                 child: Text('PageView'),
@@ -97,13 +97,13 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SliverToBoxAdapter(child: SizedBox(height: 16)),
         ],
       ),
     );
   }
 
   void _login(BuildContext context) {
-    // TODO: goto login screen
     if (FirebaseAuth.instance.currentUser == null) {
       context.goNamed('login');
     } else {
