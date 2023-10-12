@@ -4,4 +4,8 @@ class SlideData {
   final List<String> imgUrlList;
 
   SlideData({this.title = '', this.content = '', this.imgUrlList = const []});
+
+  Map<String, dynamic> toMap() {
+    return {'title': title, 'content': content, 'imgList': imgUrlList};
+  }
 }
