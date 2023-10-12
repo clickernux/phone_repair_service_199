@@ -9,7 +9,7 @@ class BannerScroll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 320,
+      height: 280,
       child: _buildListView(context),
     );
   }
