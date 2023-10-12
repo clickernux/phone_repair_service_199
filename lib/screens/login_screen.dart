@@ -49,13 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 100,
               height: 100,
-              color: Colors.green,
               child: _isLoading
                   ? const CircularProgressIndicator()
-                  : const Placeholder(),
+                  : Image.asset('assets/images/199PhoneServiceLogo.png'),
             ),
             const SizedBox(height: 8),
             TextFormField(
