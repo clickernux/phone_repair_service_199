@@ -133,6 +133,9 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                 const SizedBox(height: 8),
                 Image.network(
                   imgUrlList.first,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error);
+                  },
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.medium,
                 ),
@@ -190,6 +193,10 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                         height: 50,
                         child: Image.network(
                           imgUrlText,
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(
+                                Icons.image_not_supported_outlined);
+                          },
                           filterQuality: FilterQuality.low,
                           fit: BoxFit.cover,
                           loadingBuilder: (context, child, loadingProgress) {
