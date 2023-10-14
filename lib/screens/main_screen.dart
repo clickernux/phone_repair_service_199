@@ -48,14 +48,8 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
-          SliverToBoxAdapter(
-            child: Container(
-              height: 240,
-              color: Colors.blue,
-              child: const Center(
-                child: Text('PageView'),
-              ),
-            ),
+          const SliverToBoxAdapter(
+            child: PageSlideView(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverGrid.count(
