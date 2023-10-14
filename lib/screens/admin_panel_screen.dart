@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -68,25 +69,39 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 if (imgUrlList.isNotEmpty) {
-                  showModalBottomSheet<bool>(
-                    context: context,
-                    enableDrag: true,
-                    isScrollControlled: true,
-                    builder: (context) {
-                      final textTheme = Theme.of(context).textTheme;
-                      return sheetWidget(textTheme);
+                  Connectivity().checkConnectivity().then(
+                    (value) {
+                      if (value == ConnectivityResult.none) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('No Internet Connection'),
+                          ),
+                        );
+                      } else {
+                        showModalBottomSheet<bool>(
+                          context: context,
+                          enableDrag: true,
+                          isScrollControlled: true,
+                          builder: (context) {
+                            final textTheme = Theme.of(context).textTheme;
+                            return sheetWidget(textTheme);
+                          },
+                        ).then((value) {
+                          if (value == null) {
+                            return;
+                          } else if (value) {
+                            context.pop();
+                          } else if (!value) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('အမှားအယွင်းရှိနေသည်!'),
+                              ),
+                            );
+                          }
+                        });
+                      }
                     },
-                  ).then((value) {
-                    if (value != null && value) {
-                      context.pop();
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('အမှားအယွင်းရှိနေသည်!'),
-                        ),
-                      );
-                    }
-                  });
+                  );
                 } else {
                   setState(() {
                     urlEmpty = 'အနည်းဆုံး ပုံurl တစ်ခုထည့်ပါ!';
@@ -232,17 +247,27 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
         errorText: urlEmpty,
         suffix: IconButton(
           onPressed: () {
-            if (imgUrlController.text.isNotEmpty) {
-              setState(() {
-                imgUrlList.add(imgUrlController.text);
-                imgUrlController.clear();
-                urlEmpty = null;
-              });
-            } else {
-              setState(() {
-                urlEmpty = 'ပုံ url ဖြည့်ပါ!';
-              });
-            }
+            Connectivity().checkConnectivity().then((value) {
+              if (value == ConnectivityResult.none) {
+                return ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('No Internet Connection'),
+                  ),
+                );
+              } else {
+                if (imgUrlController.text.isNotEmpty) {
+                  setState(() {
+                    imgUrlList.add(imgUrlController.text);
+                    imgUrlController.clear();
+                    urlEmpty = null;
+                  });
+                } else {
+                  setState(() {
+                    urlEmpty = 'ပုံ url ဖြည့်ပါ!';
+                  });
+                }
+              }
+            });
           },
           icon: const Icon(Icons.add),
         ),
