@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/model/slide_data.dart';
+import 'package:phone_repair_service_199/util.dart';
 
 class AdminPanelScreen extends StatefulWidget {
   const AdminPanelScreen({super.key});
@@ -331,7 +332,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
       imgUrlList: imgUrlList,
     );
 
-    db.collection('slide-data').add(data.toMap()).then((value) {
+    db.collection(Util.collectionName).add(data.toMap()).then((value) {
       debugPrint('Data: ${value.id} has been uploaded!');
       context.pop(true);
     }).onError((error, stackTrace) {

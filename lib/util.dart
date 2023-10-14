@@ -1,6 +1,7 @@
 class Util {
   static String appNameMM = 'ဝမ်းနိုင်းနိုင်း ဖုန်းပြုပြင်ရေး';
   static String appNameEng = '199 Phone Repair Service';
+  static String collectionName = 'slide-data';
 
   static List<({String text, String imgPath})> bannerContent = [
     (
