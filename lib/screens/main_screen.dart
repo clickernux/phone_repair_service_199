@@ -49,6 +49,11 @@ class MainScreen extends StatelessWidget {
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           const SliverToBoxAdapter(
+              child: Padding(
+            padding: EdgeInsets.only(bottom: 8),
+            child: Text('သင့်အတွက်'),
+          )),
+          const SliverToBoxAdapter(
             child: PageSlideView(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
