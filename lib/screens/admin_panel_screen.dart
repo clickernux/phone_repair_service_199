@@ -82,10 +82,11 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
                         showModalBottomSheet<bool>(
                           context: context,
                           enableDrag: true,
+                          showDragHandle: true,
                           isScrollControlled: true,
                           builder: (context) {
                             final textTheme = Theme.of(context).textTheme;
-                            return sheetWidget(textTheme);
+                            return SafeArea(child: sheetWidget(textTheme));
                           },
                         ).then((value) {
                           if (value == null) {
@@ -122,8 +123,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: ListView(
         children: [
           if (isLoading)
             const CircularProgressIndicator()
