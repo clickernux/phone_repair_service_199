@@ -1,7 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:phone_repair_service_199/util.dart';
+
+import 'component_layer.dart';
 
 class PageSlideView extends StatefulWidget {
   const PageSlideView({super.key});
@@ -18,7 +19,7 @@ class _PageSlideViewState extends State<PageSlideView> {
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
-    _pageController = PageController();
+    _pageController = PageController(initialPage: 0, viewportFraction: 1.1);
   }
 
   @override
@@ -32,7 +33,11 @@ class _PageSlideViewState extends State<PageSlideView> {
     return SizedBox(
       height: 240,
       child: FutureBuilder(
-        future: _firestore.collection(Util.collectionName).get(),
+        future: _firestore
+            .collection(Util.collectionName)
+            .orderBy('timestamp', descending: true)
+            .limit(5)
+            .get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -49,22 +54,14 @@ class _PageSlideViewState extends State<PageSlideView> {
               debugPrint(doc.data().toString());
             }
 
-            final latestData = data.docs.take(5).toList();
+            final latestData = data.docs;
             return PageView.builder(
               itemCount: latestData.length,
               itemBuilder: (context, index) {
                 final doc = latestData[index];
                 final List<dynamic> imgUrl = doc.data()['imgList'];
                 debugPrint(imgUrl.first.toString());
-                return Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(imgUrl.first),
-                      fit: BoxFit.cover,
-                      filterQuality: FilterQuality.medium,
-                    ),
-                  ),
-                );
+                return PageCard(imgUrl: imgUrl, doc: doc);
               },
             );
           }
