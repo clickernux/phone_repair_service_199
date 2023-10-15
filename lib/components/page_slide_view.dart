@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:phone_repair_service_199/util.dart';
 
 import 'component_layer.dart';
+import 'page_indicator.dart';
 
 class PageSlideView extends StatefulWidget {
   const PageSlideView({super.key});
@@ -14,24 +17,27 @@ class PageSlideView extends StatefulWidget {
 class _PageSlideViewState extends State<PageSlideView> {
   late final PageController _pageController;
   late final FirebaseFirestore _firestore;
+  late final StreamController<int> _streamController;
 
   @override
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
-    _pageController = PageController(initialPage: 0, viewportFraction: 1.1);
+    _pageController = PageController(initialPage: 0, viewportFraction: 1.5);
+    _streamController = StreamController<int>();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _streamController.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 240,
+      height: 250,
       child: FutureBuilder(
         future: _firestore
             .collection(Util.collectionName)
@@ -55,14 +61,29 @@ class _PageSlideViewState extends State<PageSlideView> {
             }
 
             final latestData = data.docs;
-            return PageView.builder(
-              itemCount: latestData.length,
-              itemBuilder: (context, index) {
-                final doc = latestData[index];
-                final List<dynamic> imgUrl = doc.data()['imgList'];
-                debugPrint(imgUrl.first.toString());
-                return PageCard(imgUrl: imgUrl, doc: doc);
-              },
+            return Column(
+              children: [
+                Expanded(
+                  flex: 10,
+                  child: PageView.builder(
+                    itemCount: latestData.length,
+                    onPageChanged: _onPageChanged,
+                    itemBuilder: (context, index) {
+                      final doc = latestData[index];
+                      final List<dynamic> imgUrl = doc.data()['imgList'];
+                      debugPrint(imgUrl.first.toString());
+                      return PageCard(imgUrl: imgUrl, doc: doc);
+                    },
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: PageIndicator(
+                    streamController: _streamController,
+                    latestData: latestData,
+                  ),
+                ),
+              ],
             );
           }
           return const Center(
@@ -71,5 +92,10 @@ class _PageSlideViewState extends State<PageSlideView> {
         },
       ),
     );
+  }
+
+  void _onPageChanged(int value) {
+    debugPrint('Current Page Index: $value');
+    _streamController.add(value);
   }
 }
