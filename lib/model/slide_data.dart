@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class SlideData {
   final String title;
   final String content;
@@ -6,6 +8,11 @@ class SlideData {
   SlideData({this.title = '', this.content = '', this.imgUrlList = const []});
 
   Map<String, dynamic> toMap() {
-    return {'title': title, 'content': content, 'imgList': imgUrlList};
+    return {
+      'title': title,
+      'content': content,
+      'imgList': imgUrlList,
+      'timestamp': FieldValue.serverTimestamp(),
+    };
   }
 }
