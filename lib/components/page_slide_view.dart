@@ -17,7 +17,6 @@ class _PageSlideViewState extends State<PageSlideView> {
   late final PageController _pageController;
   late final FirebaseFirestore _firestore;
   late final StreamController<int> _indicatorStreamController;
-  late final StreamController<int> _autoSlideStreamController;
   late final Timer _timer;
   int totalPage = 0;
   int currentPage = 0;
@@ -27,7 +26,6 @@ class _PageSlideViewState extends State<PageSlideView> {
     super.initState();
     _firestore = FirebaseFirestore.instance;
     _pageController = PageController(initialPage: 0, viewportFraction: 0.9);
-    _autoSlideStreamController = StreamController();
     _indicatorStreamController = StreamController<int>();
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       if (currentPage < totalPage - 1) {
