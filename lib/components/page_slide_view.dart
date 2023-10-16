@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:phone_repair_service_199/util.dart';
 
 import 'component_layer.dart';
-import 'page_indicator.dart';
 
 class PageSlideView extends StatefulWidget {
   const PageSlideView({super.key});
@@ -17,20 +16,35 @@ class PageSlideView extends StatefulWidget {
 class _PageSlideViewState extends State<PageSlideView> {
   late final PageController _pageController;
   late final FirebaseFirestore _firestore;
-  late final StreamController<int> _streamController;
+  late final StreamController<int> _indicatorStreamController;
+  late final StreamController<int> _autoSlideStreamController;
+  late final Timer _timer;
+  int totalPage = 0;
+  int currentPage = 0;
 
   @override
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
-    _pageController = PageController(initialPage: 0, viewportFraction: 1.5);
-    _streamController = StreamController<int>();
+    _pageController = PageController(initialPage: 0, viewportFraction: 0.9);
+    _autoSlideStreamController = StreamController();
+    _indicatorStreamController = StreamController<int>();
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (currentPage < totalPage - 1) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      _pageController.animateToPage(currentPage,
+          duration: const Duration(milliseconds: 350), curve: Curves.easeIn);
+    });
   }
 
   @override
   void dispose() {
     _pageController.dispose();
-    _streamController.close();
+    _indicatorStreamController.close();
+    _timer.cancel();
     super.dispose();
   }
 
@@ -56,16 +70,15 @@ class _PageSlideViewState extends State<PageSlideView> {
                 child: Text('No Data'),
               );
             }
-            for (var doc in data.docs) {
-              debugPrint(doc.data().toString());
-            }
 
             final latestData = data.docs;
+            totalPage = latestData.length;
             return Column(
               children: [
                 Expanded(
                   flex: 10,
                   child: PageView.builder(
+                    controller: _pageController,
                     itemCount: latestData.length,
                     onPageChanged: _onPageChanged,
                     itemBuilder: (context, index) {
@@ -79,7 +92,7 @@ class _PageSlideViewState extends State<PageSlideView> {
                 Flexible(
                   flex: 1,
                   child: PageIndicator(
-                    streamController: _streamController,
+                    streamController: _indicatorStreamController,
                     latestData: latestData,
                   ),
                 ),
@@ -96,6 +109,8 @@ class _PageSlideViewState extends State<PageSlideView> {
 
   void _onPageChanged(int value) {
     debugPrint('Current Page Index: $value');
-    _streamController.add(value);
+    currentPage = value;
+    debugPrint('Current Index: $currentPage');
+    _indicatorStreamController.add(value);
   }
 }
