@@ -57,30 +57,40 @@ class _BannerScrollState extends State<BannerScroll> {
   Widget _introInfo(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: 12,
-        horizontal: 16,
-      ),
       decoration: const BoxDecoration(
-        color: Colors.black87,
+        image: DecorationImage(
+          image: AssetImage('assets/images/repair_phone.jpg'),
+          fit: BoxFit.cover,
+        ),
       ),
       alignment: Alignment.bottomLeft,
-      child: AnimatedSwitcher(
-        duration: const Duration(seconds: 1),
-        transitionBuilder: (child, animation) {
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-        child: Text(
-          Util.bannerContent[index].text,
-          key: ValueKey<String>(
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 16,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.4),
+          // borderRadius: const BorderRadius.all(Radius.circular(12)),
+        ),
+        // alignment: Alignment.bottomLeft,
+        child: AnimatedSwitcher(
+          duration: const Duration(seconds: 1),
+          transitionBuilder: (child, animation) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          child: Text(
             Util.bannerContent[index].text,
-          ),
-          style: textTheme.labelMedium?.copyWith(
-            color: Colors.white,
-            height: 1.8,
+            key: ValueKey<String>(
+              Util.bannerContent[index].text,
+            ),
+            style: textTheme.labelMedium?.copyWith(
+              color: Colors.white,
+              height: 1.8,
+            ),
           ),
         ),
       ),
