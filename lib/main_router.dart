@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/scaffold_with_navbar.dart';
@@ -34,6 +35,18 @@ class MainRouter {
                   path: 'admin_panel',
                   name: 'admin_panel',
                   builder: (context, state) => const AdminPanelScreen(),
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'page_data',
+                  name: 'page_data',
+                  builder: (context, state) {
+                    final data = state.extra
+                        as QueryDocumentSnapshot<Map<String, dynamic>>;
+                    return PageDataScreen(
+                      doc: data,
+                    );
+                  },
                 ),
               ]),
           GoRoute(
