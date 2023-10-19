@@ -41,15 +41,15 @@ class PageCard extends StatelessWidget {
                       .labelLarge
                       ?.copyWith(color: Colors.white),
                 ),
-                Text(
-                  doc.data()['content'],
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelMedium
-                      ?.copyWith(color: Colors.white),
-                )
+                // Text(
+                //   doc.data()['content'],
+                //   maxLines: 3,
+                //   overflow: TextOverflow.ellipsis,
+                //   style: Theme.of(context)
+                //       .textTheme
+                //       .labelMedium
+                //       ?.copyWith(color: Colors.white),
+                // )
               ],
             ),
           ),
