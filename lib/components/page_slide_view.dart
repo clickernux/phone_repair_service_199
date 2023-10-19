@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/util.dart';
 
 import 'component_layer.dart';
@@ -49,7 +50,7 @@ class _PageSlideViewState extends State<PageSlideView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 300,
       child: FutureBuilder(
         future: _firestore
             .collection(Util.collectionName)
@@ -82,8 +83,16 @@ class _PageSlideViewState extends State<PageSlideView> {
                     itemBuilder: (context, index) {
                       final doc = latestData[index];
                       final List<dynamic> imgUrl = doc.data()['imgList'];
-                      debugPrint(imgUrl.first.toString());
-                      return PageCard(imgUrl: imgUrl, doc: doc);
+
+                      return InkWell(
+                        onTap: () {
+                          context.goNamed(
+                            'page_data',
+                            extra: doc,
+                          );
+                        },
+                        child: PageCard(imgUrl: imgUrl, doc: doc),
+                      );
                     },
                   ),
                 ),
