@@ -34,18 +34,8 @@ class MainScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'ကျွမ်းကျင်မှုဖြင့်သာ ဝန်ဆောင်မှုပေးသည်',
-                  style: textTheme.labelSmall,
-                ),
-                const SizedBox(height: 8),
-                const BannerScroll(),
-              ],
-            ),
+          const SliverToBoxAdapter(
+            child: BannerScroll(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           const SliverToBoxAdapter(
