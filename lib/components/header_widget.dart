@@ -48,7 +48,9 @@ class HeaderWidget extends StatelessWidget {
         ),
         const VerticalDivider(),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.goNamed('notifications');
+          },
           icon: const Icon(Icons.notifications),
         ),
       ],
