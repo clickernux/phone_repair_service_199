@@ -14,10 +14,10 @@ class PageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+    return Card(
       child: Container(
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
           image: DecorationImage(
             image: CachedNetworkImageProvider(imgUrl.first),
             fit: BoxFit.cover,
@@ -27,7 +27,13 @@ class PageCard extends StatelessWidget {
         alignment: Alignment.bottomLeft,
         child: Container(
           width: double.infinity,
-          color: Colors.black.withOpacity(0.5),
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.5),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(8),
+              bottomRight: Radius.circular(8),
+            ),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
