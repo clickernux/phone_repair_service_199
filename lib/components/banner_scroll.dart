@@ -34,7 +34,7 @@ class _BannerScrollState extends State<BannerScroll> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 280,
+      height: 250,
       child: _introInfo(context),
     );
   }
@@ -59,7 +59,7 @@ class _BannerScrollState extends State<BannerScroll> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/repair_phone.jpg'),
+          image: AssetImage('assets/images/repair_phone2.jpg'),
           fit: BoxFit.cover,
         ),
       ),
