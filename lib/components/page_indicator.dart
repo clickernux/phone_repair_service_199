@@ -20,6 +20,7 @@ class PageIndicator extends StatelessWidget {
         builder: (context, snapshot) {
           final pageIndex = snapshot.data;
           return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(latestData.length, (index) {
               final color =
                   pageIndex == index ? Colors.black87 : Colors.white60;
