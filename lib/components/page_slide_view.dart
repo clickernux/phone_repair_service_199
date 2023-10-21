@@ -58,7 +58,7 @@ class _PageSlideViewState extends State<PageSlideView>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 250,
       child: FutureBuilder(
         future: _firestore
             .collection(Util.collectionName)
