@@ -14,7 +14,8 @@ class PageSlideView extends StatefulWidget {
   State<PageSlideView> createState() => _PageSlideViewState();
 }
 
-class _PageSlideViewState extends State<PageSlideView> {
+class _PageSlideViewState extends State<PageSlideView>
+    with WidgetsBindingObserver {
   late final PageController _pageController;
   late final FirebaseFirestore _firestore;
   late final StreamController<int> _indicatorStreamController;
@@ -25,6 +26,7 @@ class _PageSlideViewState extends State<PageSlideView> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _firestore = FirebaseFirestore.instance;
     _pageController = PageController(initialPage: 0, viewportFraction: 0.9);
     _indicatorStreamController = StreamController<int>();
@@ -44,7 +46,13 @@ class _PageSlideViewState extends State<PageSlideView> {
     _pageController.dispose();
     _indicatorStreamController.close();
     _timer.cancel();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    debugPrint('Current State: ${state.name}');
   }
 
   @override
@@ -75,7 +83,6 @@ class _PageSlideViewState extends State<PageSlideView> {
             return Column(
               children: [
                 Expanded(
-                  flex: 10,
                   child: PageView.builder(
                     controller: _pageController,
                     itemCount: latestData.length,
@@ -96,12 +103,9 @@ class _PageSlideViewState extends State<PageSlideView> {
                     },
                   ),
                 ),
-                Flexible(
-                  flex: 1,
-                  child: PageIndicator(
-                    streamController: _indicatorStreamController,
-                    latestData: latestData,
-                  ),
+                PageIndicator(
+                  streamController: _indicatorStreamController,
+                  latestData: latestData,
                 ),
               ],
             );
