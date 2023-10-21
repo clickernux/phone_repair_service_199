@@ -37,7 +37,7 @@ class MainRouter {
                   builder: (context, state) => const AdminPanelScreen(),
                 ),
                 GoRoute(
-                  parentNavigatorKey: _rootNavigatorKey,
+                  // parentNavigatorKey: _rootNavigatorKey,
                   path: 'page_data',
                   name: 'page_data',
                   builder: (context, state) {
@@ -48,6 +48,21 @@ class MainRouter {
                     );
                   },
                 ),
+                GoRoute(
+                    path: 'notifications',
+                    name: 'notifications',
+                    builder: (context, state) => const NotificationScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'noti',
+                        name: 'noti',
+                        builder: (context, state) {
+                          final data = state.extra
+                              as QueryDocumentSnapshot<Map<String, dynamic>>;
+                          return PageDataScreen(doc: data);
+                        },
+                      ),
+                    ]),
               ]),
           GoRoute(
             path: '/blog',
