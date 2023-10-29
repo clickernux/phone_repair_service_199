@@ -11,16 +11,16 @@ class MarqueeText extends StatelessWidget {
     final db = FirebaseFirestore.instance;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: FutureBuilder(
-        future: db
+      child: StreamBuilder(
+        stream: db
             .collection(Util.collectionNameMessage)
-            .orderBy('message', descending: true)
+            .orderBy('timestamp', descending: true)
             .limit(1)
-            .get(),
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             final data = snapshot.data;
-            if (data == null) {
+            if (data == null || data.docs.isEmpty) {
               return defaultMarquee(Util.defaultMarqueeText);
             }
             return defaultMarquee(data.docs.first['message']);
