@@ -3,6 +3,8 @@ class Util {
   static String appNameEng = '199 Phone Repair Service';
   static String collectionName = 'slide-data';
   static String collectionNameMessage = 'messages';
+  static String defaultMarqueeText =
+      'မင်္ဂလာပါ၊ 199 Phone Repair Service မှကြိုဆိုပါတယ်';
 
   static List<({String text, String imgPath})> bannerContent = [
     (
