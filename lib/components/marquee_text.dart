@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:marquee/marquee.dart';
 import 'package:phone_repair_service_199/util.dart';
-import 'package:text_scroll/text_scroll.dart';
 
 class MarqueeText extends StatelessWidget {
   const MarqueeText({super.key});
