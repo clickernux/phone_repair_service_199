@@ -14,7 +14,7 @@ class MarqueeText extends StatelessWidget {
       child: FutureBuilder(
         future: db
             .collection(Util.collectionNameMessage)
-            .orderBy('message')
+            .orderBy('message', descending: true)
             .limit(1)
             .get(),
         builder: (context, snapshot) {
