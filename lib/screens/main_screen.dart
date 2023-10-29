@@ -1,5 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/components/component_layer.dart';
+
+import '../util.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -8,19 +13,21 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      // appBar: AppBar(
-      //   title: InkWell(
-      //     onLongPress: () => _login(context),
-      //     child: Text(Util.appNameMM),
-      //   ),
-      //   titleTextStyle: textTheme.labelLarge?.copyWith(fontSize: 18),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {},
-      //       icon: const Icon(LineIcons.bell),
-      //     ),
-      //   ],
-      // ),
+      appBar: AppBar(
+        title: InkWell(
+          onLongPress: () => _login(context),
+          child: Text(Util.appNameMM),
+        ),
+        titleTextStyle: textTheme.labelLarge?.copyWith(fontSize: 18),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.goNamed('notifications');
+            },
+            icon: const Icon(LineIcons.bell),
+          ),
+        ],
+      ),
       body: _buildbody(context, textTheme),
     );
   }
@@ -30,12 +37,12 @@ class MainScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: HeaderWidget(),
-            ),
-          ),
+          // const SliverToBoxAdapter(
+          //   child: Padding(
+          //     padding: EdgeInsets.symmetric(vertical: 16),
+          //     child: HeaderWidget(),
+          //   ),
+          // ),
           const SliverToBoxAdapter(
             child: BannerScroll(),
           ),
@@ -52,9 +59,9 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SliverToBoxAdapter(
-            child: PageSlideView(),
-          ),
+          // const SliverToBoxAdapter(
+          //   child: PageSlideView(),
+          // ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverGrid.count(
             crossAxisSpacing: 8,
@@ -99,5 +106,13 @@ class MainScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _login(BuildContext context) {
+    if (FirebaseAuth.instance.currentUser == null) {
+      context.goNamed('login');
+    } else {
+      context.goNamed('admin_panel');
+    }
   }
 }
