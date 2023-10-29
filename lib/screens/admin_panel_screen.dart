@@ -45,77 +45,84 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Admin Panel'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              FirebaseAuth.instance
-                  .signOut()
-                  .then((value) => context.pop())
-                  .onError((error, stackTrace) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      error.toString(),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Admin Panel'),
+          bottom: const TabBar(tabs: [
+            Text('Noti'),
+            Text('Accessories'),
+          ]),
+          actions: [
+            IconButton(
+              onPressed: () {
+                FirebaseAuth.instance
+                    .signOut()
+                    .then((value) => context.pop())
+                    .onError((error, stackTrace) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        error.toString(),
+                      ),
                     ),
-                  ),
-                );
-              });
-            },
-            icon: const Icon(Icons.logout_sharp),
-          ),
-          IconButton(
-            onPressed: () {
-              if (formKey.currentState!.validate()) {
-                if (imgUrlList.isNotEmpty) {
-                  Connectivity().checkConnectivity().then(
-                    (value) {
-                      if (value == ConnectivityResult.none) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('No Internet Connection'),
-                          ),
-                        );
-                      } else {
-                        showModalBottomSheet<bool>(
-                          context: context,
-                          enableDrag: true,
-                          showDragHandle: true,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            final textTheme = Theme.of(context).textTheme;
-                            return SafeArea(child: sheetWidget(textTheme));
-                          },
-                        ).then((value) {
-                          if (value == null) {
-                            return;
-                          } else if (value) {
-                            context.pop();
-                          } else if (!value) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('အမှားအယွင်းရှိနေသည်!'),
-                              ),
-                            );
-                          }
-                        });
-                      }
-                    },
                   );
-                } else {
-                  setState(() {
-                    urlEmpty = 'အနည်းဆုံး ပုံurl တစ်ခုထည့်ပါ!';
-                  });
+                });
+              },
+              icon: const Icon(Icons.logout_sharp),
+            ),
+            IconButton(
+              onPressed: () {
+                if (formKey.currentState!.validate()) {
+                  if (imgUrlList.isNotEmpty) {
+                    Connectivity().checkConnectivity().then(
+                      (value) {
+                        if (value == ConnectivityResult.none) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('No Internet Connection'),
+                            ),
+                          );
+                        } else {
+                          showModalBottomSheet<bool>(
+                            context: context,
+                            enableDrag: true,
+                            showDragHandle: true,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              final textTheme = Theme.of(context).textTheme;
+                              return SafeArea(child: sheetWidget(textTheme));
+                            },
+                          ).then((value) {
+                            if (value == null) {
+                              return;
+                            } else if (value) {
+                              context.pop();
+                            } else if (!value) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('အမှားအယွင်းရှိနေသည်!'),
+                                ),
+                              );
+                            }
+                          });
+                        }
+                      },
+                    );
+                  } else {
+                    setState(() {
+                      urlEmpty = 'အနည်းဆုံး ပုံurl တစ်ခုထည့်ပါ!';
+                    });
+                  }
                 }
-              }
-            },
-            icon: const Icon(Icons.publish),
-          ),
-        ],
+              },
+              icon: const Icon(Icons.publish),
+            ),
+          ],
+        ),
+        body: _buildTabbarView(),
       ),
-      body: _buildBody(),
     );
   }
 
@@ -163,7 +170,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
     );
   }
 
-  Widget _buildBody() {
+  Widget _notiCreator() {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 12,
@@ -305,7 +312,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
     );
   }
 
-  TextFormField titleField() {
+  Widget titleField() {
     return TextFormField(
       controller: titleController,
       keyboardType: TextInputType.name,
@@ -342,5 +349,14 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
         isLoading = false;
       });
     });
+  }
+
+  Widget _buildTabbarView() {
+    return TabBarView(children: [
+      _notiCreator(),
+      Container(
+        color: Colors.green,
+      ),
+    ]);
   }
 }
