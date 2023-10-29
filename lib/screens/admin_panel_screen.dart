@@ -3,6 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:phone_repair_service_199/components/component_layer.dart';
 import 'package:phone_repair_service_199/model/slide_data.dart';
 import 'package:phone_repair_service_199/util.dart';
 
@@ -46,13 +47,14 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Admin Panel'),
           bottom: const TabBar(tabs: [
-            Text('Noti'),
-            Text('Accessories'),
+            Text('စာတို'),
+            Text('သတင်း'),
+            Text('အပိုပစ္စည်း'),
           ]),
           actions: [
             IconButton(
@@ -353,6 +355,7 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
 
   Widget _buildTabbarView() {
     return TabBarView(children: [
+      const MessagePage(),
       _notiCreator(),
       Container(
         color: Colors.green,
