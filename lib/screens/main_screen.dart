@@ -37,9 +37,13 @@ class MainScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: CustomScrollView(
         slivers: [
+          const SliverToBoxAdapter(
+            child: BannerScroll(),
+          ),
+
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 4),
+              padding: const EdgeInsets.only(top: 4),
               child: Container(
                 color: Colors.yellow,
                 child: const Row(
@@ -54,9 +58,6 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          const SliverToBoxAdapter(
-            child: BannerScroll(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverToBoxAdapter(
