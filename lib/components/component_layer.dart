@@ -5,3 +5,4 @@ export 'page_card.dart';
 export 'page_indicator.dart';
 export 'header_widget.dart';
 export 'message_page.dart';
+export 'marquee_text.dart';
