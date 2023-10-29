@@ -37,12 +37,24 @@ class MainScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: CustomScrollView(
         slivers: [
-          // const SliverToBoxAdapter(
-          //   child: Padding(
-          //     padding: EdgeInsets.symmetric(vertical: 16),
-          //     child: HeaderWidget(),
-          //   ),
-          // ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Container(
+                color: Colors.yellow,
+                child: const Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Icon(LineIcons.envelopeOpenText),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Flexible(child: MarqueeText()),
+                  ],
+                ),
+              ),
+            ),
+          ),
           const SliverToBoxAdapter(
             child: BannerScroll(),
           ),
