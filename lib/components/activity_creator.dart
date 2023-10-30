@@ -22,7 +22,7 @@ class _ActivityCreatorState extends State<ActivityCreator> {
 
   final _formKey = GlobalKey<FormState>();
   final List<String> _imgUrlList = [];
-  bool _showSheet = false;
+  // bool _showSheet = false;
   bool _isLoading = false;
 
   String? _urlEmpty;
@@ -281,7 +281,15 @@ class _ActivityCreatorState extends State<ActivityCreator> {
                 if (value == null) {
                   return;
                 } else if (value) {
-                  context.pop();
+                  _titleController.clear();
+                  _contentController.clear();
+                  _imgUrlList.clear();
+                  setState(() {});
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Uploaded Succefully!'),
+                    ),
+                  );
                 } else if (!value) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
