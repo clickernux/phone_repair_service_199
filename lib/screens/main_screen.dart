@@ -49,7 +49,8 @@ class MainScreen extends StatelessWidget {
                 child: const Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Icon(LineIcons.envelopeOpenText),
+                    SizedBox(width: 4),
+                    Icon(LineIcons.bullhorn),
                     SizedBox(
                       width: 4,
                     ),
