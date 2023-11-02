@@ -40,7 +40,6 @@ class MainScreen extends StatelessWidget {
           const SliverToBoxAdapter(
             child: BannerScroll(),
           ),
-
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 4),
@@ -61,21 +60,9 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 8, top: 8),
-              child: Text(
-                'သင့်အတွက်',
-                style: textTheme.headlineSmall?.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
+          const SliverToBoxAdapter(
+            child: ActivitySlideHost(),
           ),
-          // const SliverToBoxAdapter(
-          //   child: PageSlideView(),
-          // ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
           SliverGrid.count(
             crossAxisSpacing: 8,
