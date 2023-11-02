@@ -72,7 +72,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     onTap: () {
                       context.goNamed('noti', extra: data);
                     },
-                    child: PageCard(imgUrl: imgUrl, doc: data),
+                    child: PageCard(doc: data),
                   ),
                 ),
               );
