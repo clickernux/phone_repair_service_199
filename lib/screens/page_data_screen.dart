@@ -65,7 +65,7 @@ class PageDataScreen extends StatelessWidget {
                 height: 250,
                 child: CachedNetworkImage(
                   imageUrl: url,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.scaleDown,
                 ),
               ),
             );
