@@ -1,27 +1,26 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PageIndicator extends StatelessWidget {
   const PageIndicator({
     super.key,
-    required StreamController<int> streamController,
-    required this.latestData,
-  }) : _streamController = streamController;
+    required Stream<int> streamController,
+    required this.length,
+  }) : _stream = streamController;
 
-  final StreamController<int> _streamController;
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> latestData;
+  final Stream<int> _stream;
+  final int length;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<int>(
-        stream: _streamController.stream,
+        stream: _stream,
         initialData: 0,
         builder: (context, snapshot) {
           final pageIndex = snapshot.data;
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(latestData.length, (index) {
+            children: List.generate(length, (index) {
               final color =
                   pageIndex == index ? Colors.black87 : Colors.white60;
               return Padding(
