@@ -59,7 +59,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
             itemCount: doc.size,
             itemBuilder: (context, index) {
               final data = doc.docs[index];
-              final imgUrl = data.data()['imgList'] as List<dynamic>;
               return SizedBox(
                 height: 250,
                 child: Dismissible(
