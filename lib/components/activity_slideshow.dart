@@ -51,6 +51,7 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
   @override
   void dispose() {
     _timer?.cancel();
+    _streamController.close();
     super.dispose();
   }
 
