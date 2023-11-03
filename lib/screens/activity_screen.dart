@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/components/component_layer.dart';
@@ -32,11 +33,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget _buildBody(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: FutureBuilder(
-        future: FirebaseFirestore.instance
+      child: StreamBuilder(
+        stream: FirebaseFirestore.instance
             .collection(Util.collectionName)
             .orderBy('timestamp', descending: true)
-            .get(),
+            .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -61,18 +62,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
               final data = doc.docs[index];
               return SizedBox(
                 height: 250,
-                child: Dismissible(
-                  key: Key(data.id),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (_) {
-                    _deleteData(data.id);
+                child: InkWell(
+                  onLongPress: FirebaseAuth.instance.currentUser == null
+                      ? null
+                      : () => _deleteData(data.id),
+                  onTap: () {
+                    context.goNamed('noti', extra: data);
                   },
-                  child: InkWell(
-                    onTap: () {
-                      context.goNamed('noti', extra: data);
-                    },
-                    child: PageCard(doc: data),
-                  ),
+                  child: PageCard(doc: data),
                 ),
               );
             },
@@ -83,22 +80,44 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 
   void _deleteData(String id) {
-    setState(() {
-      _isLoading = true;
-    });
-    FirebaseFirestore.instance
-        .collection(Util.collectionName)
-        .doc(id)
-        .delete()
-        .then((value) {
-      showSnackbarMsg('Item Deleted!');
-    }).onError((error, stackTrace) {
-      showSnackbarMsg(error.toString());
-    }).whenComplete(() {
-      setState(() {
-        _isLoading = false;
-      });
-    });
+    showDialog(
+      context: context,
+      builder: (context) {
+        return FutureBuilder(
+          future: FirebaseFirestore.instance
+              .collection(Util.collectionName)
+              .doc(id)
+              .delete(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CircularProgressIndicator(
+                    backgroundColor: Theme.of(context).cardColor,
+                  ),
+                ),
+              );
+            }
+            if (snapshot.hasError) {
+              return const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Error deleting data!'),
+                ),
+              );
+            }
+
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text('Done Deleting Data!'),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 
   void showSnackbarMsg(String msg) {
