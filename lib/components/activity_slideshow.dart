@@ -29,23 +29,20 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (widget.data.length > 1) {
-      debugPrint('Data length is greater than 1. Timer has started!');
-      _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-        if (_currentPage < widget.data.length - 1) {
-          _currentPage++;
-        } else {
-          _currentPage = 0;
-        }
-        if (_pageController.hasClients) {
-          _pageController.animateToPage(
-            _currentPage,
-            duration: const Duration(milliseconds: 350),
-            curve: Curves.easeIn,
-          );
-        }
-      });
-    }
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      if (_currentPage < widget.data.length - 1) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+      if (_pageController.hasClients) {
+        _pageController.animateToPage(
+          _currentPage,
+          duration: const Duration(milliseconds: 350),
+          curve: Curves.easeIn,
+        );
+      }
+    });
   }
 
   @override
