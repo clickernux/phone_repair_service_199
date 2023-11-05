@@ -32,14 +32,17 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  _buildbody(BuildContext context, TextTheme textTheme) {
+  Widget _buildbody(BuildContext context, TextTheme textTheme) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
       child: CustomScrollView(
         slivers: [
+          // Header
           const SliverToBoxAdapter(
             child: BannerScroll(),
           ),
+
+          // Marquee Text
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 4),
@@ -60,10 +63,14 @@ class MainScreen extends StatelessWidget {
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+          // Activity Slideshow
           const SliverToBoxAdapter(
             child: ActivitySlideHost(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+          // USSD Code
           SliverGrid.count(
             crossAxisSpacing: 8,
             crossAxisCount: 2,
