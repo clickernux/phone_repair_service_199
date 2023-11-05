@@ -1,0 +1,111 @@
+{
+    "mpt": [
+        {
+            "service": "လက်ကျန်ငွေစစ်ရန်",
+            "code": "*124#"
+        },
+        {
+            "service": "လက်ကျန်ဘောနပ်(စ်)စစ်လိုလျှင်နှင့် အခြားသော packages များကိုစစ်ရန်",
+            "code": "*224#"
+        },
+        {
+            "service": "Package ဝယ်ရန်",
+            "code": "*777#"
+        },
+        {
+            "service": "ဘေလ်လွှဲရန်",
+            "code": "*223*[bill amount]*[PhNo]#",
+            "example": "*223*1000*09256xxxxxx#"
+        },
+        {
+            "service": "ဘေလ်ချေးရန်",
+            "code": "*800#"
+        },
+        {
+            "service": "လက်ကျန်ချေးငွေစစ်ရန်",
+            "code": "*800*7#"
+        },
+        {
+            "service": "ယခင်ရယူထားသော ချေးငွေစာရင်းကြည့်ရန်",
+            "code": "*800*5#"
+        },
+        {
+            "service": "ဒေတာချေးရန်",
+            "code": "*900#"
+        },
+        {
+            "service": "ပေးချေရန်ကျန်သော ဒေတာချေးငွေပမာဏကို စစ်ရန်",
+            "code": "*900*7#"
+        },
+        {
+            "service": "ဆင်းမ်ကဒ်မှတ်ပုံခြင်းဆိုင်ရာ အချက်အလက်စစ်ရန်",
+            "code": "*601#"
+        },
+        {
+            "service": "ပရိုမိုးရှင်းကမ်းလှမ်းချက်များ နှင့် ထပ်ဆောင်းဝန်ဆောင်မှုများ",
+            "code": "*106#"
+        },
+        {
+            "service": "ဖုန်းနံပါတ်စစ်ရန်",
+            "code": "*88#"
+        },
+        {
+            "service": "Call Center",
+            "code": "106"
+        }
+    ],
+    "atom": [
+        {
+            "service": "လက်ကျန်ငွေစစ်ရန်",
+            "code": "*124#"
+        },
+        {
+            "service": "Pack Balance",
+            "code": "*124*1#"
+        },
+        {
+            "service": "Shal Suboo Balance and Validity Check",
+            "code": "*9124#"
+        },
+        {
+            "service": "Talkie Suboo Balance and Validity Check",
+            "code": "*9125#"
+        },
+        {
+            "service": "Special Rate Validity check",
+            "code": "*979*3*8#"
+        },
+        {
+            "service": "Balance Transfer",
+            "code": "*122*[phone number]*[amount]#"
+        },
+        {
+            "service": "Data Balance Transfer",
+            "code": "*121*MB(eg.1024)*[PhNo]*1#"
+        },
+        {
+            "service": "Voice Balance Transfer",
+            "code": "*120#[PhNo]*seconds(eg.300)*1#"
+        },
+        {
+            "service": "My Offers",
+            "code": "*555#"
+        },
+        {
+            "service": "Voice Offers",
+            "code": "*666#"
+        },
+        {
+            "service": "SIM Registration (How to check ownership)",
+            "code": "*979*3*3#"
+        },
+        {
+            "service": "Check Phone Number",
+            "code": "*97#"
+        },
+        {
+            "service": "Change Language",
+            "code": "*979*6# Or *979*99#"
+        }
+    ]
+}
