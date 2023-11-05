@@ -76,7 +76,7 @@
             "code": "*979*3*8#"
         },
         {
-            "service": "Balance Transfer",
+            "service": "ဘေလ်လွှဲရန်",
             "code": "*122*[phone number]*[amount]#"
         },
         {
@@ -96,15 +96,15 @@
             "code": "*666#"
         },
         {
-            "service": "SIM Registration (How to check ownership)",
+            "service": "ဆင်းမ်ကဒ်မှတ်ပုံခြင်းဆိုင်ရာ အချက်အလက်စစ်ရန်",
             "code": "*979*3*3#"
         },
         {
-            "service": "Check Phone Number",
+            "service": "ဖုန်းနံပါတ်စစ်ရန်",
             "code": "*97#"
         },
         {
-            "service": "Change Language",
+            "service": "ဘာသာစကားပြောင်းရန်",
             "code": "*979*6# Or *979*99#"
         }
     ]
