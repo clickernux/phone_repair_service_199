@@ -63,6 +63,7 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
           'Activities',
           style: textTheme.labelLarge,
         ),
+        const SizedBox(height: 8),
         SizedBox(
           height: 250,
           child: _buildPageView(),
