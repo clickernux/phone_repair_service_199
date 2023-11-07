@@ -25,6 +25,16 @@ class MainRouter {
               builder: (context, state) => const MainScreen(),
               routes: [
                 GoRoute(
+                  // parentNavigatorKey: _rootNavigatorKey,
+                  path: 'ussd/:operatorName',
+                  name: 'ussd',
+                  builder: (context, state) {
+                    final String name = state.pathParameters['operatorName'] ??
+                        'Unknown Operator';
+                    return UssdScreen(operatorName: name);
+                  },
+                ),
+                GoRoute(
                   parentNavigatorKey: _rootNavigatorKey,
                   path: 'login',
                   name: 'login',
