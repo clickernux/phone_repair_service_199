@@ -9,3 +9,4 @@ export 'message_list_widget.dart';
 export 'activity_creator.dart';
 export 'activity_slide_host.dart';
 export 'activity_slideshow.dart';
+export 'operator_card.dart';
