@@ -94,17 +94,26 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'ATOM',
                 color: Colors.blue,
-                onTap: () {},
+                onTap: () {
+                  context.goNamed('ussd',
+                      pathParameters: {'operatorName': 'ATOM'});
+                },
               ),
               OperatorCard(
                 label: 'MyTel',
                 color: Colors.green,
-                onTap: () {},
+                onTap: () {
+                  context.goNamed('ussd',
+                      pathParameters: {'operatorName': 'MYTEL'});
+                },
               ),
               OperatorCard(
                 label: 'Ooredoo',
                 color: Colors.red,
-                onTap: () {},
+                onTap: () {
+                  context.goNamed('ussd',
+                      pathParameters: {'operatorName': 'Ooredoo'});
+                },
               ),
             ],
           ),
