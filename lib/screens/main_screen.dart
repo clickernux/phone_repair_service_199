@@ -71,42 +71,40 @@ class MainScreen extends StatelessWidget {
           const SliverToBoxAdapter(child: SizedBox(height: 16)),
 
           // USSD Code
+          SliverToBoxAdapter(
+            child: Text(
+              'USSD Code',
+              style: textTheme.labelLarge,
+            ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 8)),
           SliverGrid.count(
             crossAxisSpacing: 8,
             crossAxisCount: 2,
             mainAxisSpacing: 8,
             children: [
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.red,
-                child: const Center(
-                  child: Text('MPT'),
-                ),
+              OperatorCard(
+                label: 'MPT',
+                color: Colors.yellow,
+                onTap: () {
+                  context
+                      .goNamed('ussd', pathParameters: {'operatorName': 'MPT'});
+                },
               ),
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.green,
-                child: const Center(
-                  child: Text('ATOM'),
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 200,
+              OperatorCard(
+                label: 'ATOM',
                 color: Colors.blue,
-                child: const Center(
-                  child: Text('MyTEL'),
-                ),
+                onTap: () {},
               ),
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.black38,
-                child: const Center(
-                  child: Text('Oredoo'),
-                ),
+              OperatorCard(
+                label: 'MyTel',
+                color: Colors.green,
+                onTap: () {},
+              ),
+              OperatorCard(
+                label: 'Ooredoo',
+                color: Colors.red,
+                onTap: () {},
               ),
             ],
           ),
