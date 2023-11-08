@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:phone_repair_service_199/load_json.dart';
 
+import '../components/component_layer.dart';
+
 class UssdScreen extends StatelessWidget {
   const UssdScreen({
     super.key,
@@ -40,10 +42,8 @@ class UssdScreen extends StatelessWidget {
           primary: true,
           itemBuilder: (context, index) {
             final code = data[index];
-            return ListTile(
-              title: Text(code.service),
-              subtitle: Text(code.code),
-            );
+
+            return UssdTile(ussd: code);
           },
         );
       },
