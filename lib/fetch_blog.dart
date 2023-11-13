@@ -45,4 +45,15 @@ class FetchBlog {
     }
     return '';
   }
+
+  static String getFirstParagraph(String htmlContent) {
+    final doc = parse.parse(htmlContent);
+    final result = doc.querySelector('p');
+
+    if (result != null) {
+      return result.text;
+    } else {
+      return '';
+    }
+  }
 }
