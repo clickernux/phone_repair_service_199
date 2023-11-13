@@ -11,3 +11,4 @@ export 'activity_slide_host.dart';
 export 'activity_slideshow.dart';
 export 'operator_card.dart';
 export 'ussd_tile.dart';
+export 'blog_card.dart';
