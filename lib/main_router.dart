@@ -1,6 +1,8 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:phone_repair_service_199/model/data_layer.dart';
 import 'package:phone_repair_service_199/scaffold_with_navbar.dart';
 import 'package:phone_repair_service_199/screens/screen_layer.dart';
 
@@ -75,10 +77,24 @@ class MainRouter {
                     ]),
               ]),
           GoRoute(
-            path: '/blog',
-            name: 'blog',
-            builder: (context, state) => const BlogScreen(),
-          ),
+              path: '/blog',
+              name: 'blog',
+              builder: (context, state) => const BlogScreen(),
+              routes: [
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'post/:postId',
+                  name: 'post',
+                  builder: (context, state) {
+                    final Map<String, dynamic> json =
+                        state.extra as Map<String, dynamic>;
+                    final post = BloggerPost.fromJson(json);
+                    return BlogPostScreen(
+                      post: post,
+                    );
+                  },
+                ),
+              ]),
           GoRoute(
             path: '/accessories',
             name: 'accessories',
