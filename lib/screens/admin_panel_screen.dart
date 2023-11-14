@@ -49,9 +49,9 @@ class _AdminPanelScreenState extends State<AdminPanelScreen> {
         appBar: AppBar(
           title: const Text('Admin Panel'),
           bottom: const TabBar(tabs: [
-            Text('စာတို'),
-            Text('သတင်း'),
-            Text('အပိုပစ္စည်း'),
+            Text('Announce'),
+            Text('Activity'),
+            Text('Accessory'),
           ]),
           actions: [
             IconButton(
