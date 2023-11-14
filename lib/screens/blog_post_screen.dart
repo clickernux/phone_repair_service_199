@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:phone_repair_service_199/model/data_layer.dart';
 
-class BlogPostScreen extends StatelessWidget {
-  const BlogPostScreen({
-    super.key,
-    required this.id,
-    required this.title,
-    required this.content,
-    required this.date,
-  });
-  final String id;
-  final String title;
-  final String content;
-  final String date;
+class BlogPostScreen extends StatefulWidget {
+  const BlogPostScreen({super.key, required this.post});
 
+  final BloggerPost post;
+
+  @override
+  State<BlogPostScreen> createState() => _BlogPostScreenState();
+}
+
+class _BlogPostScreenState extends State<BlogPostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,19 +36,25 @@ class BlogPostScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Text(
-            title,
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+          child: Text(
+            widget.post.title,
             style: textTheme.headlineSmall?.copyWith(
               height: 1.8,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
             ),
           ),
-          Flexible(child: Html(data: content))
-        ],
-      ),
+        ),
+        const Divider(
+          indent: 12,
+          endIndent: 12,
+        ),
+        Html(data: widget.post.content)
+      ],
     );
   }
 }
