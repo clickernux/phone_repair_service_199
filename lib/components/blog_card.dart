@@ -22,12 +22,11 @@ class BlogCard extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            context.go(Uri(path: 'post', queryParameters: {
-              'title': blog.title,
-              'content': blog.content,
-              'id': blog.id,
-              'date': blog.date,
-            }).toString());
+            context.goNamed(
+              'post',
+              pathParameters: {'postId': blog.id},
+              extra: blog.toJson(),
+            );
           },
           child: Column(
             mainAxisSize: MainAxisSize.max,
