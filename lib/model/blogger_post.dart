@@ -12,4 +12,24 @@ class BloggerPost {
     required this.date,
     required this.selfLink,
   });
+
+  factory BloggerPost.fromJson(Map<String, dynamic> map) {
+    return BloggerPost(
+      id: map['id'],
+      title: map['title'],
+      content: map['content'],
+      date: map['date'],
+      selfLink: map['selfLink'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'content': content,
+      'date': date,
+      'selfLink': selfLink
+    };
+  }
 }
