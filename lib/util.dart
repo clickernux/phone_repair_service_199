@@ -5,6 +5,7 @@ class Util {
   static String collectionNameMessage = 'messages';
   static String defaultMarqueeText =
       'မင်္ဂလာပါ၊ 199 Phone Repair Service မှကြိုဆိုပါတယ်';
+  static String bloggerPost = 'blogger_posts';
 
   static List<({String text, String imgPath})> bannerContent = [
     (
