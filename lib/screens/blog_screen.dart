@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/fetch_blog.dart';
+import 'package:phone_repair_service_199/model/blogger_post.dart';
+import 'package:phone_repair_service_199/util.dart';
 
 import '../components/component_layer.dart';
 
@@ -25,9 +28,8 @@ class BlogScreen extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
-    final apiKey = dotenv.env['BLOGGER_API'] ?? '';
     return FutureBuilder(
-      future: FetchBlog.fetchBlog('683508182780079242', apiKey),
+      future: Hive.openBox(Util.bloggerPost),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -45,23 +47,27 @@ class BlogScreen extends StatelessWidget {
             ),
           );
         }
-        final data = snapshot.data;
+        final data = snapshot.data?.toMap();
         if (data == null || data.isEmpty) {
           return const Center(
             child: Text('No Data'),
           );
         }
-        debugPrint('Total Post: ${data.length}');
+        debugPrint(data.toString());
+        final posts = data.values.toList();
         return ListView.builder(
-          itemCount: data.length,
+          itemCount: posts.length,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            final blog = data[index];
+            final blog = BloggerPost.fromJson(posts[index]);
 
             return BlogCard(blog: blog);
           },
         );
+        // return const Center(
+        //   child: Text("Data Exist!"),
+        // );
       },
     );
   }
