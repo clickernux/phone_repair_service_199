@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:phone_repair_service_199/fetch_blog.dart';
 import 'package:phone_repair_service_199/model/blogger_post.dart';
 import 'package:phone_repair_service_199/util.dart';
 
