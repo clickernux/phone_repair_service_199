@@ -13,7 +13,7 @@ class BloggerPost {
     required this.selfLink,
   });
 
-  factory BloggerPost.fromJson(Map<String, dynamic> map) {
+  factory BloggerPost.fromJson(Map<dynamic, dynamic> map) {
     return BloggerPost(
       id: map['id'],
       title: map['title'],
