@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/model/blogger_post.dart';
 import 'package:phone_repair_service_199/util.dart';
@@ -53,6 +54,11 @@ class BlogScreen extends StatelessWidget {
         }
         debugPrint(data.toString());
         final posts = data.values.toList();
+        posts.sort((a, b) {
+          final DateTime aDate = DateFormat('yyyy-MM-dd').parse(a['date']);
+          final DateTime bDate = DateFormat('yyyy-MM-dd').parse(b['date']);
+          return bDate.compareTo(aDate);
+        });
         return ListView.builder(
           itemCount: posts.length,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
