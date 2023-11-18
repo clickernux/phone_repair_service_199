@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/model/data_layer.dart';
 
@@ -35,6 +36,8 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
 
   Widget _buildBody(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final date = DateTime.parse(widget.post.date);
+    debugPrint('Date: ${date.day}-${date.month}-${date.year}');
 
     return ListView(
       children: [
@@ -52,6 +55,13 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
         const Divider(
           indent: 12,
           endIndent: 12,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: Text(
+            DateFormat('dd-MMM-yyyy').format(date),
+            style: textTheme.labelSmall,
+          ),
         ),
         Html(data: widget.post.content)
       ],

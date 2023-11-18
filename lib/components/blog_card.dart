@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:phone_repair_service_199/fetch_blog.dart';
 import 'package:phone_repair_service_199/model/blogger_post.dart';
 
@@ -17,6 +18,7 @@ class BlogCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final imgUrl = FetchBlog.imgUrl(blog.content);
     final brief = FetchBlog.getFirstParagraph(blog.content);
+    final date = DateTime.parse(blog.date);
 
     return Column(
       children: [
@@ -55,6 +57,11 @@ class BlogCard extends StatelessWidget {
                 brief,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                DateFormat('dd-MMM-yyyy').format(date),
+                style: textTheme.labelSmall,
               ),
             ],
           ),
