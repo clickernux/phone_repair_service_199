@@ -26,7 +26,6 @@ void callbackDispatcher() {
       for (var post in posts) {
         box.put(post.id, post.toJson());
       }
-      // debugPrint('Posts in box: ${box.length}');
     } catch (error) {
       throw Exception(error);
     }
@@ -42,6 +41,9 @@ void main() async {
   Workmanager().registerOneOffTask(
     'task-identifier',
     'FetchBloggerPost',
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+    ),
   );
   runApp(const PhoneRepairService199App());
 }
