@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/model/data_layer.dart';
 import 'package:phone_repair_service_199/util.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BlogPostScreen extends StatefulWidget {
   const BlogPostScreen({super.key, required this.post});
@@ -46,7 +47,9 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
             icon: Icon(_isFav ? LineIcons.heartAlt : LineIcons.heart),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Share.share(widget.post.url);
+            },
             icon: const Icon(LineIcons.share),
           ),
         ],
