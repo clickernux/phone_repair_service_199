@@ -8,3 +8,4 @@ export 'page_data_screen.dart';
 export 'activity_screen.dart';
 export 'ussd_screen.dart';
 export 'blog_post_screen.dart';
+export 'favorite_posts_screen.dart';
