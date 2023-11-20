@@ -21,13 +21,13 @@ class FetchBlog {
           final title = element['title'];
           final content = element['content'];
           final date = element['published'];
-          final url = element['selfLink'];
+          final url = element['url'];
           final bloggerPost = BloggerPost(
             id: id,
             title: title,
             content: content,
             date: date,
-            selfLink: url,
+            url: url,
           );
           posts.add(bloggerPost);
         }

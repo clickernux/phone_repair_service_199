@@ -3,14 +3,14 @@ class BloggerPost {
   final String title;
   final String content;
   final String date;
-  final String selfLink;
+  final String url;
 
   const BloggerPost({
     required this.id,
     required this.title,
     required this.content,
     required this.date,
-    required this.selfLink,
+    required this.url,
   });
 
   factory BloggerPost.fromJson(Map<dynamic, dynamic> map) {
@@ -19,7 +19,7 @@ class BloggerPost {
       title: map['title'],
       content: map['content'],
       date: map['date'],
-      selfLink: map['selfLink'],
+      url: map['selfLink'],
     );
   }
 
@@ -29,7 +29,7 @@ class BloggerPost {
       'title': title,
       'content': content,
       'date': date,
-      'selfLink': selfLink
+      'selfLink': url
     };
   }
 }
