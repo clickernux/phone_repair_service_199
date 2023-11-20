@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
@@ -93,6 +92,12 @@ class MainRouter {
                       post: post,
                     );
                   },
+                ),
+                GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
+                  path: 'favorite_posts',
+                  name: 'favorite_posts',
+                  builder: (context, state) => const FavoritePostsScreen(),
                 ),
               ]),
           GoRoute(
