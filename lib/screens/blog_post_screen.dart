@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:phone_repair_service_199/model/data_layer.dart';
+import 'package:phone_repair_service_199/util.dart';
 
 class BlogPostScreen extends StatefulWidget {
   const BlogPostScreen({super.key, required this.post});
@@ -14,6 +16,15 @@ class BlogPostScreen extends StatefulWidget {
 }
 
 class _BlogPostScreenState extends State<BlogPostScreen> {
+  bool _isFav = false;
+  late final Box box;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeBox();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +32,18 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
         title: const Text('ဖတ်စရာ'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(LineIcons.heart),
+            onPressed: () {
+              setState(() {
+                if (_isFav) {
+                  box.delete(widget.post.id);
+                  _isFav = false;
+                } else {
+                  box.put(widget.post.id, widget.post.toJson());
+                  _isFav = true;
+                }
+              });
+            },
+            icon: Icon(_isFav ? LineIcons.heartAlt : LineIcons.heart),
           ),
           IconButton(
             onPressed: () {},
@@ -66,5 +87,14 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
         Html(data: widget.post.content)
       ],
     );
+  }
+
+  void _initializeBox() async {
+    box = await Hive.openBox(Util.savedPosts);
+    if (box.containsKey(widget.post.id)) {
+      setState(() {
+        _isFav = true;
+      });
+    }
   }
 }
