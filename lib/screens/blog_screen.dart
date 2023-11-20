@@ -52,7 +52,7 @@ class BlogScreen extends StatelessWidget {
             child: Text('No Data'),
           );
         }
-        debugPrint(data.toString());
+        debugPrint('Post List: ${data.length}');
         final posts = data.values.toList();
         posts.sort((a, b) {
           final DateTime aDate = DateFormat('yyyy-MM-dd').parse(a['date']);
