@@ -43,7 +43,7 @@ void callbackDispatcher() {
         LocalNotificationService.display(
           title: 'ဖတ်စရာအသစ်ရပါပြီ',
           message:
-              'သင့်အတွက် ဖတ်ရှုစရာအကြောင်းအရာများ ${box.length}ခု ရရှိထားပါသည်။',
+              'သင့်အတွက် ဖတ်ရှုစရာအကြောင်းအရာများ ${box.length - previousPostCount}ခု ရရှိထားပါသည်။',
           channelId: channelId,
           channelName: channelName,
           channelDesc: channelDesc,
@@ -64,9 +64,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
   final prefs = await SharedPreferences.getInstance();
   final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
-  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
 
   if (isFirstLaunch) {
     Workmanager().registerOneOffTask(
