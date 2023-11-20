@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:line_icons/line_icons.dart';
@@ -17,7 +18,9 @@ class BlogScreen extends StatelessWidget {
         title: const Text('ဖတ်စရာများ'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed('favorite_posts');
+            },
             icon: const Icon(LineIcons.heartAlt),
           )
         ],
