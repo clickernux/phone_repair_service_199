@@ -39,3 +39,22 @@ class Util {
     ),
   ];
 }
+
+enum AccessoryCategory {
+  charger,
+  usbCable,
+  screenProtector,
+  phoneCase,
+  earphone,
+  ic,
+  bottomKey,
+  usbPort,
+  backGlass,
+  cameraGlass,
+  bodyFrame,
+  subModule,
+  simInjector,
+  simTray,
+  keyChain,
+  other,
+}
