@@ -40,8 +40,6 @@ class LocalNotificationService {
       NotificationResponse details) async {
     final String? payload = details.payload;
 
-    if (details.payload != null) {
-      print('notification payload: $payload');
-    }
+    if (details.payload != null) {}
   }
 }
