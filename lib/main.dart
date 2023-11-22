@@ -37,7 +37,7 @@ void callbackDispatcher() {
       debugPrint('Deleted $deletedPostCount posts!');
 
       for (var post in posts) {
-        box.put(post.id, post.toJson());
+        await box.put(post.id, post.toJson());
       }
       if (box.length != previousPostCount) {
         LocalNotificationService.display(
@@ -65,25 +65,25 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
-  final prefs = await SharedPreferences.getInstance();
-  final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+  final sharePref = await SharedPreferences.getInstance();
+  final bool isFirstLaunch = sharePref.getBool('firstLaunch') ?? true;
 
   if (isFirstLaunch) {
     Workmanager().registerOneOffTask(
       'first-launch-task',
-      'FetchBloggerPost',
+      'OneOffFetchBlogPosts',
       constraints: Constraints(
         networkType: NetworkType.connected,
       ),
     );
-    await prefs.setBool('isFirstLaunch', false);
+    sharePref.setBool('firstLaunch', false);
   }
 
   Workmanager().registerPeriodicTask(
     'periodic-task',
-    'fetch blog posts',
+    'PeriodicFetchBlogPosts',
     constraints: Constraints(networkType: NetworkType.connected),
-    frequency: const Duration(hours: 3),
+    frequency: const Duration(hours: 5),
   );
   runApp(const PhoneRepairService199App());
 }
