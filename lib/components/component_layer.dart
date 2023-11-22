@@ -12,3 +12,4 @@ export 'activity_slideshow.dart';
 export 'operator_card.dart';
 export 'ussd_tile.dart';
 export 'blog_card.dart';
+export 'accessory_creator.dart';
