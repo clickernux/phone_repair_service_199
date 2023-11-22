@@ -37,7 +37,6 @@ class FetchBlog {
     } catch (e) {
       return Future.error(e);
     }
-    print('Total Blog Post: ${posts.length}');
     return posts;
   }
 
