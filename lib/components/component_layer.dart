@@ -13,3 +13,4 @@ export 'operator_card.dart';
 export 'ussd_tile.dart';
 export 'blog_card.dart';
 export 'accessory_creator.dart';
+export 'info_card.dart';
