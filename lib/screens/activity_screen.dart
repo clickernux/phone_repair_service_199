@@ -5,19 +5,19 @@ import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/components/component_layer.dart';
 import 'package:phone_repair_service_199/util.dart';
 
-class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({super.key});
+class ActivitiesScreen extends StatefulWidget {
+  const ActivitiesScreen({super.key});
 
   @override
-  State<NotificationScreen> createState() => _NotificationScreenState();
+  State<ActivitiesScreen> createState() => _ActivitiesScreenState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen> {
+class _ActivitiesScreenState extends State<ActivitiesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notifications'),
+        title: const Text('Activities'),
       ),
       body: _buildBody(context),
     );
@@ -62,7 +62,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   onTap: () {
                     context.goNamed('noti', extra: data);
                   },
-                  child: PageCard(doc: data),
+                  child: PageCard(
+                    doc: data,
+                    onTapItem: () {
+                      context.goNamed('subActivity', extra: data);
+                    },
+                  ),
                 ),
               );
             },

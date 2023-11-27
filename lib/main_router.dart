@@ -49,8 +49,8 @@ class MainRouter {
                 ),
                 GoRoute(
                   // parentNavigatorKey: _rootNavigatorKey,
-                  path: 'page_data',
-                  name: 'page_data',
+                  path: 'activity',
+                  name: 'activity',
                   builder: (context, state) {
                     final data = state.extra
                         as QueryDocumentSnapshot<Map<String, dynamic>>;
@@ -60,13 +60,13 @@ class MainRouter {
                   },
                 ),
                 GoRoute(
-                    path: 'notifications',
-                    name: 'notifications',
-                    builder: (context, state) => const NotificationScreen(),
+                    path: 'activities',
+                    name: 'activities',
+                    builder: (context, state) => const ActivitiesScreen(),
                     routes: [
                       GoRoute(
-                        path: 'noti',
-                        name: 'noti',
+                        path: 'subActivity',
+                        name: 'subActivity',
                         builder: (context, state) {
                           final data = state.extra
                               as QueryDocumentSnapshot<Map<String, dynamic>>;

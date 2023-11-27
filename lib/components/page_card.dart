@@ -7,19 +7,22 @@ class PageCard extends StatelessWidget {
   const PageCard({
     super.key,
     required this.doc,
+    required this.onTapItem,
   });
 
   final QueryDocumentSnapshot<Map<String, dynamic>> doc;
+  final VoidCallback onTapItem;
 
   @override
   Widget build(BuildContext context) {
     final List<dynamic> imgUrl = doc.data()['imgList'];
     return InkWell(
       onTap: () {
-        context.goNamed(
-          'page_data',
-          extra: doc,
-        );
+        // context.goNamed(
+        //   'activity',
+        //   extra: doc,
+        // );
+        onTapItem();
       },
       child: Card(
         child: Container(

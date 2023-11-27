@@ -26,9 +26,12 @@ class AboutScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return ListView(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 280,
-          child: Placeholder(),
+          child: Image.asset(
+            'assets/images/repair_phone2.jpg',
+            fit: BoxFit.cover,
+          ),
         ),
         const InfoCard(
             title: '199 Phone Repair Service',
