@@ -21,8 +21,10 @@ class MainScreen extends StatelessWidget {
         titleTextStyle: textTheme.labelLarge?.copyWith(fontSize: 18),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(LineIcons.bell),
+            onPressed: () {
+              context.goNamed('all_noti');
+            },
+            icon: const Icon(LineIcons.bullhorn),
           ),
         ],
       ),
