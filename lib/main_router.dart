@@ -21,60 +21,66 @@ class MainRouter {
         builder: (context, state, child) => ScaffoldWithNavBar(child: child),
         routes: [
           GoRoute(
-              path: '/main',
-              name: 'main',
-              builder: (context, state) => const MainScreen(),
-              routes: [
-                GoRoute(
-                  // parentNavigatorKey: _rootNavigatorKey,
-                  path: 'ussd/:operatorName',
-                  name: 'ussd',
-                  builder: (context, state) {
-                    final String name = state.pathParameters['operatorName'] ??
-                        'Unknown Operator';
-                    return UssdScreen(operatorName: name);
-                  },
-                ),
-                GoRoute(
-                  parentNavigatorKey: _rootNavigatorKey,
-                  path: 'login',
-                  name: 'login',
-                  builder: (context, state) => const LoginScreen(),
-                ),
-                GoRoute(
-                  parentNavigatorKey: _rootNavigatorKey,
-                  path: 'admin_panel',
-                  name: 'admin_panel',
-                  builder: (context, state) => const AdminPanelScreen(),
-                ),
-                GoRoute(
-                  // parentNavigatorKey: _rootNavigatorKey,
-                  path: 'activity',
-                  name: 'activity',
-                  builder: (context, state) {
-                    final data = state.extra
-                        as QueryDocumentSnapshot<Map<String, dynamic>>;
-                    return PageDataScreen(
-                      doc: data,
-                    );
-                  },
-                ),
-                GoRoute(
-                    path: 'activities',
-                    name: 'activities',
-                    builder: (context, state) => const ActivitiesScreen(),
-                    routes: [
-                      GoRoute(
-                        path: 'subActivity',
-                        name: 'subActivity',
-                        builder: (context, state) {
-                          final data = state.extra
-                              as QueryDocumentSnapshot<Map<String, dynamic>>;
-                          return PageDataScreen(doc: data);
-                        },
-                      ),
-                    ]),
-              ]),
+            path: '/main',
+            name: 'main',
+            builder: (context, state) => const MainScreen(),
+            routes: [
+              GoRoute(
+                // parentNavigatorKey: _rootNavigatorKey,
+                path: 'ussd/:operatorName',
+                name: 'ussd',
+                builder: (context, state) {
+                  final String name = state.pathParameters['operatorName'] ??
+                      'Unknown Operator';
+                  return UssdScreen(operatorName: name);
+                },
+              ),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: 'login',
+                name: 'login',
+                builder: (context, state) => const LoginScreen(),
+              ),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: 'admin_panel',
+                name: 'admin_panel',
+                builder: (context, state) => const AdminPanelScreen(),
+              ),
+              GoRoute(
+                // parentNavigatorKey: _rootNavigatorKey,
+                path: 'activity',
+                name: 'activity',
+                builder: (context, state) {
+                  final data = state.extra
+                      as QueryDocumentSnapshot<Map<String, dynamic>>;
+                  return PageDataScreen(
+                    doc: data,
+                  );
+                },
+              ),
+              GoRoute(
+                  path: 'activities',
+                  name: 'activities',
+                  builder: (context, state) => const ActivitiesScreen(),
+                  routes: [
+                    GoRoute(
+                      path: 'subActivity',
+                      name: 'subActivity',
+                      builder: (context, state) {
+                        final data = state.extra
+                            as QueryDocumentSnapshot<Map<String, dynamic>>;
+                        return PageDataScreen(doc: data);
+                      },
+                    ),
+                  ]),
+              GoRoute(
+                path: 'all_noti',
+                name: 'all_noti',
+                builder: (context, state) => const AllNotificationScreen(),
+              ),
+            ],
+          ),
           GoRoute(
               path: '/blog',
               name: 'blog',
