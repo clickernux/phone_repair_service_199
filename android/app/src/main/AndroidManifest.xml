@@ -6,9 +6,9 @@
         </intent>        
     </queries>
     <application
-        android:label="phone_repair_service_199"
+        android:label="Phone Repair Service"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
