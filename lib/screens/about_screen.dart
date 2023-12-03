@@ -65,7 +65,7 @@ class AboutScreen extends StatelessWidget {
                 _launchFacebook('www.facebook.com/phoneservice199');
               },
               icon: const Icon(
-                LineIcons.link,
+                Icons.launch,
                 size: 32,
               )),
         ),
