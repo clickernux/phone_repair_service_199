@@ -7,6 +7,7 @@ class Util {
       'မင်္ဂလာပါ၊ 199 Phone Repair Service မှကြိုဆိုပါတယ်';
   static String bloggerPost = 'blogger_posts';
   static String savedPosts = 'SavedPost';
+  static String notiBox = 'NotiBox';
 
   static List<({String text, String imgPath})> bannerContent = [
     (
