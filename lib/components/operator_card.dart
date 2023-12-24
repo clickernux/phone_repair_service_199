@@ -4,11 +4,11 @@ class OperatorCard extends StatelessWidget {
   const OperatorCard({
     super.key,
     required this.label,
-    required this.color,
+    this.color,
     required this.onTap,
   });
   final String label;
-  final Color color;
+  final Color? color;
   final VoidCallback onTap;
 
   @override

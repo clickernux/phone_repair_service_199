@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:phone_repair_service_199/components/component_layer.dart';
 
 class ActivitySlideshow extends StatefulWidget {
@@ -59,9 +60,20 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Activities',
-          style: textTheme.labelLarge,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Activities',
+              style: textTheme.labelLarge,
+            ),
+            TextButton(
+              onPressed: () {
+                context.goNamed('activities');
+              },
+              child: const Text('အားလုံး >>'),
+            )
+          ],
         ),
         const SizedBox(height: 8),
         SizedBox(
@@ -89,7 +101,12 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
       },
       itemBuilder: (context, index) {
         final item = widget.data[index];
-        return PageCard(doc: item);
+        return PageCard(
+          doc: item,
+          onTapItem: () {
+            context.goNamed('activity', extra: item);
+          },
+        );
       },
     );
   }

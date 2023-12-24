@@ -22,9 +22,9 @@ class MainScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.goNamed('notifications');
+              context.goNamed('all_noti');
             },
-            icon: const Icon(LineIcons.bell),
+            icon: const Icon(LineIcons.bullhorn),
           ),
         ],
       ),
@@ -34,7 +34,7 @@ class MainScreen extends StatelessWidget {
 
   Widget _buildbody(BuildContext context, TextTheme textTheme) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
       child: CustomScrollView(
         slivers: [
           // Header
@@ -85,7 +85,6 @@ class MainScreen extends StatelessWidget {
             children: [
               OperatorCard(
                 label: 'MPT',
-                color: Colors.yellow,
                 onTap: () {
                   context
                       .goNamed('ussd', pathParameters: {'operatorName': 'MPT'});
@@ -93,7 +92,6 @@ class MainScreen extends StatelessWidget {
               ),
               OperatorCard(
                 label: 'ATOM',
-                color: Colors.blue,
                 onTap: () {
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'ATOM'});
@@ -101,7 +99,6 @@ class MainScreen extends StatelessWidget {
               ),
               OperatorCard(
                 label: 'MyTel',
-                color: Colors.green,
                 onTap: () {
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'MYTEL'});
@@ -109,7 +106,6 @@ class MainScreen extends StatelessWidget {
               ),
               OperatorCard(
                 label: 'Ooredoo',
-                color: Colors.red,
                 onTap: () {
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'Ooredoo'});

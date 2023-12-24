@@ -28,10 +28,10 @@ class ScaffoldWithNavBar extends StatelessWidget {
           icon: Icon(LineIcons.bookReader),
           label: 'ဖတ်စရာ',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(LineIcons.shoppingBag),
-          label: 'အပိုပစ္စည်း',
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Icon(LineIcons.shoppingBag),
+        //   label: 'အပိုပစ္စည်း',
+        // ),
         BottomNavigationBarItem(
           icon: Icon(LineIcons.phone),
           label: 'ဆက်သွယ်ရန်',
@@ -46,10 +46,10 @@ class ScaffoldWithNavBar extends StatelessWidget {
       return 0;
     } else if (location.startsWith('/blog')) {
       return 1;
-    } else if (location.startsWith('/accessories')) {
-      return 2;
+      // } else if (location.startsWith('/accessories')) {
+      //   return 2;
     } else if (location.startsWith('/about')) {
-      return 3;
+      return 2;
     } else {
       return 0;
     }
@@ -63,10 +63,10 @@ class ScaffoldWithNavBar extends StatelessWidget {
       case 1:
         context.goNamed('blog');
         break;
+      // case 2:
+      //   context.goNamed('accessories');
+      //   break;
       case 2:
-        context.goNamed('accessories');
-        break;
-      case 3:
         context.goNamed('about');
         break;
       default:

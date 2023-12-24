@@ -1,25 +1,27 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class PageCard extends StatelessWidget {
   const PageCard({
     super.key,
     required this.doc,
+    required this.onTapItem,
   });
 
   final QueryDocumentSnapshot<Map<String, dynamic>> doc;
+  final VoidCallback onTapItem;
 
   @override
   Widget build(BuildContext context) {
     final List<dynamic> imgUrl = doc.data()['imgList'];
     return InkWell(
       onTap: () {
-        context.goNamed(
-          'page_data',
-          extra: doc,
-        );
+        // context.goNamed(
+        //   'activity',
+        //   extra: doc,
+        // );
+        onTapItem();
       },
       child: Card(
         child: Container(
