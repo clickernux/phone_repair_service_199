@@ -121,7 +121,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
-  Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
   final sharePref = await SharedPreferences.getInstance();
   final bool isFirstLaunch = sharePref.getBool('firstLaunch') ?? true;
 
@@ -148,7 +148,7 @@ void main() async {
     'periodic-task',
     'PeriodicFetchBlogPosts',
     constraints: Constraints(networkType: NetworkType.connected),
-    frequency: const Duration(hours: 5),
+    frequency: const Duration(hours: 3),
   );
   Workmanager().registerPeriodicTask(
     'periodic-task-message',
