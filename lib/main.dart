@@ -22,6 +22,7 @@ const String channelNameNoti = 'Get Notification';
 const String channelDescNoti =
     'This channel is used for showing messages send by Admin';
 
+@pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((taskName, inputData) async {
     debugPrint('Native called background task: $taskName');
@@ -64,6 +65,15 @@ void callbackDispatcher() {
           debugPrint('Notification Skip Showing!');
         }
       } catch (error) {
+        LocalNotificationService.display(
+          title: 'ဖတ်စရာအသစ်ရပါပြီ',
+          message: error.toString(),
+          channelId: channelIdForBlog,
+          channelName: channelNameForBlog,
+          channelDesc: channelDescForBlog,
+          importance: Importance.max,
+          priority: Priority.max,
+        );
         throw Exception(error);
       }
     } else {
@@ -121,7 +131,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
-  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: false);
   final sharePref = await SharedPreferences.getInstance();
   final bool isFirstLaunch = sharePref.getBool('firstLaunch') ?? true;
 
@@ -131,6 +141,7 @@ void main() async {
       'OneOffFetchBlogPosts',
       constraints: Constraints(
         networkType: NetworkType.connected,
+        requiresBatteryNotLow: true,
       ),
     );
 
@@ -139,6 +150,7 @@ void main() async {
       'OneOffFetchingMessage',
       constraints: Constraints(
         networkType: NetworkType.connected,
+        requiresBatteryNotLow: true,
       ),
     );
     sharePref.setBool('firstLaunch', false);
@@ -147,7 +159,11 @@ void main() async {
   Workmanager().registerPeriodicTask(
     'periodic-task',
     'PeriodicFetchBlogPosts',
-    constraints: Constraints(networkType: NetworkType.connected),
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+      requiresBatteryNotLow: true,
+      requiresDeviceIdle: true,
+    ),
     frequency: const Duration(hours: 3),
   );
   Workmanager().registerPeriodicTask(
@@ -155,6 +171,8 @@ void main() async {
     'PeriodicFetchMessage',
     constraints: Constraints(
       networkType: NetworkType.connected,
+      requiresBatteryNotLow: true,
+      requiresDeviceIdle: true,
     ),
     frequency: const Duration(hours: 1),
   );
