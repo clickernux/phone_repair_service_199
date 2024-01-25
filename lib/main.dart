@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:phone_repair_service_199/fetch_blog.dart';
 import 'package:phone_repair_service_199/firebase_options.dart';
@@ -189,6 +190,7 @@ class PhoneRepairService199App extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
+        textTheme: GoogleFonts.notoSansMyanmarTextTheme(),
       ),
       routerConfig: MainRouter.router,
     );
