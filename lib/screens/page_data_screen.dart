@@ -64,7 +64,13 @@ class PageDataScreen extends StatelessWidget {
               child: SizedBox(
                 child: CachedNetworkImage(
                   imageUrl: url,
+                  errorWidget: (context, url, error) {
+                    return Image.asset('assets/images/error_loading.png');
+                  },
                   fit: BoxFit.fill,
+                  placeholder: (context, url) {
+                    return const LinearProgressIndicator();
+                  },
                 ),
               ),
             );
