@@ -190,8 +190,15 @@ class PhoneRepairService199App extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         useMaterial3: true,
+        // TODO: Add dynamic theme mode
+        brightness: Brightness.light,
         textTheme: GoogleFonts.notoSansMyanmarTextTheme(),
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        textTheme: GoogleFonts.notoSansMyanmarTextTheme(),
+      ),
+      themeMode: ThemeMode.system,
       routerConfig: MainRouter.router,
     );
   }
