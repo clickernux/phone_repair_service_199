@@ -18,7 +18,7 @@ class OperatorCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         child: Container(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
             color: color,
@@ -27,7 +27,9 @@ class OperatorCard extends StatelessWidget {
             child: FittedBox(
               child: Text(
                 label,
-                style: textTheme.headlineMedium,
+                style: textTheme.headlineMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
             ),
           ),

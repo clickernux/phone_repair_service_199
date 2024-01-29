@@ -80,7 +80,9 @@ class MainScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Text(
               'USSD Code',
-              style: textTheme.labelLarge,
+              style: textTheme.labelLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 8)),
