@@ -65,7 +65,9 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
           children: [
             Text(
               'Activities',
-              style: textTheme.labelLarge,
+              style: textTheme.labelLarge?.copyWith(
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
             TextButton(
               onPressed: () {
