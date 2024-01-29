@@ -16,7 +16,10 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: InkWell(
           onLongPress: () => _login(context),
-          child: Text(Util.appNameMM),
+          child: Text(Util.appNameMM,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onBackground,
+              )),
         ),
         titleTextStyle: textTheme.labelLarge?.copyWith(fontSize: 18),
         actions: [
@@ -48,15 +51,18 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 4),
               child: Container(
                 color: Colors.yellow,
-                child: const Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    SizedBox(width: 4),
-                    Icon(LineIcons.bullhorn),
-                    SizedBox(
+                    const SizedBox(width: 4),
+                    Icon(
+                      LineIcons.bullhorn,
+                      color: Theme.of(context).colorScheme.background,
+                    ),
+                    const SizedBox(
                       width: 4,
                     ),
-                    Flexible(child: MarqueeText()),
+                    const Flexible(child: MarqueeText()),
                   ],
                 ),
               ),
