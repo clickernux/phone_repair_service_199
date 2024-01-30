@@ -50,19 +50,13 @@ class BlogCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 blog.title,
-                style: textTheme.headlineSmall?.copyWith(
-                  fontSize: 18,
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+                style: textTheme.headlineSmall,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 4),
               Text(
                 brief,
-                maxLines: 2,
+                maxLines: 4,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
               ),
               const SizedBox(height: 8),
               Text(

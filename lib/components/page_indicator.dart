@@ -21,10 +21,11 @@ class PageIndicator extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(length, (index) {
-              final color =
-                  pageIndex == index ? Colors.black87 : Colors.white60;
+              final color = pageIndex == index
+                  ? Theme.of(context).colorScheme.onBackground
+                  : Theme.of(context).colorScheme.onInverseSurface;
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: CircleAvatar(
                   backgroundColor: Colors.grey,
                   radius: 5,

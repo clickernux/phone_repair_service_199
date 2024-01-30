@@ -14,11 +14,13 @@ class InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return ListTile(
-      titleTextStyle:
-          textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
-      title: Text(title),
-      subtitle: Text(desc),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: ListTile(
+        titleTextStyle: textTheme.headlineSmall,
+        title: Text(title),
+        subtitle: Text(desc),
+      ),
     );
   }
 }

@@ -26,10 +26,13 @@ class AboutScreen extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return ListView(
       children: [
-        Image.asset(
-          'assets/images/199SplashLogoNew.png',
-          fit: BoxFit.cover,
-          // color: Colors.white,
+        Container(
+          color: Colors.white,
+          child: Image.asset(
+            'assets/images/199SplashLogoNew.png',
+            fit: BoxFit.cover,
+            // color: Colors.white,
+          ),
         ),
         const Divider(
           height: 24,
