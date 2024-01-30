@@ -188,21 +188,31 @@ class PhoneRepairService199App extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          colorSchemeSeed: Colors.blue,
-          useMaterial3: true,
-          fontFamily: 'NotoSansMyanmar',
-          brightness: Brightness.light,
-          textTheme: MyTheme.textTheme),
-      darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          fontFamily: 'NotoSansMyanmar',
-          textTheme: MyTheme.textTheme,
-          appBarTheme: const AppBarTheme(
-              titleTextStyle: TextStyle(
+        colorSchemeSeed: Colors.blue,
+        fontFamily: 'NotoSansMyanmar',
+        brightness: Brightness.light,
+        textTheme: MyTheme.textTheme,
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
             fontFamily: 'NotoSerifMyanmar',
             fontWeight: FontWeight.w600,
             fontSize: 18,
-          ))),
+            color: Colors.black,
+          ),
+        ),
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: 'NotoSansMyanmar',
+        textTheme: MyTheme.textTheme,
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            fontFamily: 'NotoSerifMyanmar',
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+        ),
+      ),
       themeMode: ThemeMode.system,
       routerConfig: MainRouter.router,
     );

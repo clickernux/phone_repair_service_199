@@ -82,10 +82,14 @@ class AboutScreen extends StatelessWidget {
     final rawUrl = 'fb://facewebmodal/f?href=https://$s';
     final url = Uri.parse(rawUrl);
     if (!await canLaunchUrl(url)) {
-      await launchUrl(
-        url,
-        mode: LaunchMode.externalApplication,
-      );
+      try {
+        await launchUrl(
+          url,
+          mode: LaunchMode.externalApplication,
+        );
+      } catch (e) {
+        debugPrint(e.toString());
+      }
     } else {
       debugPrint('Unable to launch $url');
     }
