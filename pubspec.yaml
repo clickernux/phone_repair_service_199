@@ -53,23 +53,43 @@ flutter:
   fonts:
     - family: NotoSansMyanmar
       fonts:
-        - asset: assets/fonts/NotoSansMyanmar-Black.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Black.ttf
           weight: 900
-        - asset: assets/fonts/NotoSansMyanmar-Bold.ttf       
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Bold.ttf       
           weight: 700   
-        - asset: assets/fonts/NotoSansMyanmar-ExtraBold.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-ExtraBold.ttf
           weight: 800
-        - asset: assets/fonts/NotoSansMyanmar-ExtraLight.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-ExtraLight.ttf
           weight: 200
-        - asset: assets/fonts/NotoSansMyanmar-Light.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Light.ttf
           weight: 300
-        - asset: assets/fonts/NotoSansMyanmar-Medium.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Medium.ttf
           weight: 500
-        - asset: assets/fonts/NotoSansMyanmar-Regular.ttf
-        - asset: assets/fonts/NotoSansMyanmar-SemiBold.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Regular.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/NotoSansMyanmar-Thin.ttf
+        - asset: assets/font_family/NotoSansMyanmar/NotoSansMyanmar-Thin.ttf
           weight: 100
+    - family: NotoSerifMyanmar
+      fonts:
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Black.ttf
+          weight: 900
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Bold.ttf
+          weight: 700
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-ExtraBold.ttf
+          weight: 800
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-ExtraLight.ttf
+          weight: 200
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Light.ttf
+          weight: 300
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Medium.ttf
+          weight: 500
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Regular.ttf
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-SemiBold.ttf
+          weight: 600
+        - asset: assets/font_family/NotoSerifMyanmar/NotoSerifMyanmar-Thin.ttf
+          weight: 100
+
 flutter_launcher_icons:
   android: "launcher_icon"
   image_path: "assets/images/launcher_icon.png"
