@@ -17,14 +17,17 @@ class MyTheme {
     labelLarge: TextStyle(
       fontFamily: 'NotoSerifMyanmar',
       fontWeight: FontWeight.w400,
+      fontSize: 12,
     ),
     labelMedium: TextStyle(
       // fontFamily: 'NotoSerifMyanmar',
       fontWeight: FontWeight.w300,
+      fontSize: 11,
     ),
     labelSmall: TextStyle(
       // fontFamily: 'NotoSerifMyanmar',
       fontWeight: FontWeight.w200,
+      fontSize: 9,
     ),
     headlineLarge: TextStyle(
       fontFamily: 'NotoSerifMyanmar',
