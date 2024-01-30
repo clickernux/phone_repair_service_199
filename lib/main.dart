@@ -3,12 +3,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:phone_repair_service_199/fetch_blog.dart';
 import 'package:phone_repair_service_199/firebase_options.dart';
 import 'package:phone_repair_service_199/local_notification_service.dart';
 import 'package:phone_repair_service_199/main_router.dart';
+import 'package:phone_repair_service_199/theme.dart';
 import 'package:phone_repair_service_199/util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
@@ -188,15 +188,15 @@ class PhoneRepairService199App extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: Colors.blue,
-        useMaterial3: true,
-        fontFamily: 'NotoSerifMyanmar',
-        brightness: Brightness.light,
-        // textTheme: GoogleFonts.notoSansMyanmarTextTheme(),
-      ),
+          colorSchemeSeed: Colors.blue,
+          useMaterial3: true,
+          fontFamily: 'NotoSansMyanmar',
+          brightness: Brightness.light,
+          textTheme: MyTheme.textTheme),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        fontFamily: 'NotoSerifMyanmar',
+        fontFamily: 'NotoSansMyanmar',
+        textTheme: MyTheme.textTheme,
         // textTheme: GoogleFonts.notoSansMyanmarTextTheme(),
       ),
       themeMode: ThemeMode.system,

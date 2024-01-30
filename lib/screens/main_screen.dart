@@ -16,12 +16,14 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: InkWell(
           onLongPress: () => _login(context),
-          child: Text(Util.appNameMM,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
-              )),
+          child: Text(
+            Util.appNameMM,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+          ),
         ),
-        titleTextStyle: textTheme.labelLarge?.copyWith(fontSize: 18),
+        titleTextStyle: textTheme.headlineSmall,
         actions: [
           IconButton(
             onPressed: () {
@@ -46,25 +48,22 @@ class MainScreen extends StatelessWidget {
           ),
 
           // Marquee Text
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Container(
-                color: Colors.yellow,
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    const SizedBox(width: 4),
-                    Icon(
-                      LineIcons.bullhorn,
-                      color: Theme.of(context).colorScheme.background,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    const Flexible(child: MarqueeText()),
-                  ],
-                ),
+              padding: EdgeInsets.only(top: 4),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  SizedBox(width: 4),
+                  Icon(
+                    LineIcons.bullhorn,
+                    // color: Theme.of(context).colorScheme.background,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Flexible(child: MarqueeText()),
+                ],
               ),
             ),
           ),
@@ -80,9 +79,7 @@ class MainScreen extends StatelessWidget {
           SliverToBoxAdapter(
             child: Text(
               'USSD Code',
-              style: textTheme.labelLarge?.copyWith(
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
+              style: textTheme.headlineSmall,
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 8)),
