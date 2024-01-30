@@ -73,6 +73,7 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
               height: 1.8,
               fontSize: 18,
               fontWeight: FontWeight.w500,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
         ),
@@ -84,7 +85,9 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Text(
             DateFormat('dd-MMM-yyyy').format(date),
-            style: textTheme.labelSmall,
+            style: textTheme.labelSmall?.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
           ),
         ),
         Html(data: widget.post.content)

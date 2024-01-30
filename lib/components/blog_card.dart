@@ -50,18 +50,26 @@ class BlogCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 blog.title,
-                style: textTheme.labelLarge?.copyWith(fontSize: 18),
+                style: textTheme.labelLarge?.copyWith(
+                  fontSize: 18,
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 brief,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 DateFormat('dd-MMM-yyyy').format(date),
-                style: textTheme.labelSmall,
+                style: textTheme.labelSmall?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
             ],
           ),

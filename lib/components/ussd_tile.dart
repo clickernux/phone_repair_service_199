@@ -23,13 +23,17 @@ class UssdTile extends StatelessWidget {
             children: [
               Text(
                 ussd.service,
-                style: textTheme.bodyLarge,
+                style: textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
               // const SizedBox(height: 8),
               const Divider(),
               Text(
                 ussd.code,
-                style: textTheme.labelLarge,
+                style: textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
             ],
           ),
