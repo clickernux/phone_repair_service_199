@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -91,6 +92,11 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'MPT',
                 onTap: () {
+                  FirebaseAnalytics.instance.logEvent(
+                      name: 'ussd_code',
+                      parameters: <String, dynamic>{
+                        'string_parameter': 'MPT',
+                      });
                   context
                       .goNamed('ussd', pathParameters: {'operatorName': 'MPT'});
                 },
@@ -98,6 +104,11 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'ATOM',
                 onTap: () {
+                  FirebaseAnalytics.instance.logEvent(
+                      name: 'ussd_code',
+                      parameters: <String, dynamic>{
+                        'string_parameter': 'ATOM',
+                      });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'ATOM'});
                 },
@@ -105,6 +116,11 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'MyTel',
                 onTap: () {
+                  FirebaseAnalytics.instance.logEvent(
+                      name: 'ussd_code',
+                      parameters: <String, dynamic>{
+                        'string_parameter': 'MyTel',
+                      });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'MYTEL'});
                 },
@@ -112,6 +128,11 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'Ooredoo',
                 onTap: () {
+                  FirebaseAnalytics.instance.logEvent(
+                      name: 'ussd_code',
+                      parameters: <String, dynamic>{
+                        'string_parameter': 'Ooredoo',
+                      });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'Ooredoo'});
                 },
