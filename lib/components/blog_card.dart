@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
@@ -24,6 +25,10 @@ class BlogCard extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
+            FirebaseAnalytics.instance
+                .logEvent(name: 'view_blog', parameters: <String, dynamic>{
+              'string_parameter': blog.title,
+            });
             context.goNamed(
               'post',
               pathParameters: {'postId': blog.id},
