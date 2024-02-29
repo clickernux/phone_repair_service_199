@@ -56,9 +56,10 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
               return SizedBox(
                 height: 250,
                 child: InkWell(
-                  onLongPress: FirebaseAuth.instance.currentUser == null
-                      ? null
-                      : () => _deleteData(data.id),
+                  // TODO: Will be implement later
+                  // onLongPress: FirebaseAuth.instance.currentUser == null
+                  //     ? null
+                  //     : () => _deleteData(data.id),
                   onTap: () {
                     context.goNamed('noti', extra: data);
                   },
