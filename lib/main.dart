@@ -167,7 +167,7 @@ void main() async {
       requiresBatteryNotLow: true,
       // requiresDeviceIdle: true,
     ),
-    frequency: const Duration(minutes: 15),
+    frequency: const Duration(hours: 3),
   );
   Workmanager().registerPeriodicTask(
     'periodic-task-message',
