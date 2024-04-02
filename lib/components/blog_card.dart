@@ -60,7 +60,7 @@ class BlogCard extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 brief,
-                maxLines: 4,
+                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 8),

@@ -165,9 +165,9 @@ void main() async {
     constraints: Constraints(
       networkType: NetworkType.connected,
       requiresBatteryNotLow: true,
-      requiresDeviceIdle: true,
+      // requiresDeviceIdle: true,
     ),
-    frequency: const Duration(hours: 3),
+    frequency: const Duration(minutes: 15),
   );
   Workmanager().registerPeriodicTask(
     'periodic-task-message',
@@ -175,7 +175,7 @@ void main() async {
     constraints: Constraints(
       networkType: NetworkType.connected,
       requiresBatteryNotLow: true,
-      requiresDeviceIdle: true,
+      // requiresDeviceIdle: true,
     ),
     frequency: const Duration(hours: 1),
   );
@@ -188,7 +188,7 @@ class PhoneRepairService199App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: ThemeData(
         colorSchemeSeed: Colors.blue,
         fontFamily: 'NotoSansMyanmar',
