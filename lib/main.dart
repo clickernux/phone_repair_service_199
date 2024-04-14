@@ -138,27 +138,21 @@ void main() async {
   final sharePref = await SharedPreferences.getInstance();
   final bool isFirstLaunch = sharePref.getBool('firstLaunch') ?? true;
 
+  // အကယ်၍ app က ပထမဆုံး စrun တဲ့အချိန်ဖြစ်ခဲ့ရင်
+  // app စတာနဲ့ message and blog ကို fetch လုပ်ခိုင်းမယ်
   if (isFirstLaunch) {
-    Workmanager().registerOneOffTask(
-      'first-launch-task',
-      'OneOffFetchBlogPosts',
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-        requiresBatteryNotLow: true,
-      ),
-    );
-
-    Workmanager().registerOneOffTask(
-      'first-launch-fetch-message',
-      'OneOffFetchingMessage',
-      constraints: Constraints(
-        networkType: NetworkType.connected,
-        requiresBatteryNotLow: true,
-      ),
-    );
+    firstLaunchWorkmanager();
     sharePref.setBool('firstLaunch', false);
   }
+  // အကယ်၍ app က ပထမဆုံး run တာမဟုတ်ရင်
+  // အချိန်အပိုင်းအခြားအလိုက် message and blog ကို fetch ခိုင်းမယ်
+  periodicTasks();
 
+  runApp(const PhoneRepairService199App());
+}
+
+void periodicTasks() async {
+  await Future.delayed(const Duration(seconds: 5));
   Workmanager().registerPeriodicTask(
     'periodic-task',
     'PeriodicFetchBlogPosts',
@@ -179,7 +173,26 @@ void main() async {
     ),
     frequency: const Duration(hours: 1),
   );
-  runApp(const PhoneRepairService199App());
+}
+
+void firstLaunchWorkmanager() {
+  Workmanager().registerOneOffTask(
+    'first-launch-task',
+    'OneOffFetchBlogPosts',
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+      requiresBatteryNotLow: true,
+    ),
+  );
+
+  Workmanager().registerOneOffTask(
+    'first-launch-fetch-message',
+    'OneOffFetchingMessage',
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+      requiresBatteryNotLow: true,
+    ),
+  );
 }
 
 class PhoneRepairService199App extends StatelessWidget {
