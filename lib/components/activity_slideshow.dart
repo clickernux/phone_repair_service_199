@@ -92,7 +92,7 @@ class _ActivitySlideshowState extends State<ActivitySlideshow> {
     );
   }
 
-  _buildPageView() {
+  Widget _buildPageView() {
     return PageView.builder(
       controller: _pageController,
       itemCount: widget.data.length,
