@@ -67,16 +67,17 @@ void callbackDispatcher() {
           debugPrint('Notification Skip Showing!');
         }
       } catch (error) {
-        LocalNotificationService.display(
-          title: 'ဖတ်စရာအသစ်ရပါပြီ',
-          message: error.toString(),
-          channelId: channelIdForBlog,
-          channelName: channelNameForBlog,
-          channelDesc: channelDescForBlog,
-          importance: Importance.max,
-          priority: Priority.max,
-        );
-        throw Exception(error);
+        // LocalNotificationService.display(
+        //   title: 'အမှား',
+        //   message: error.toString(),
+        //   channelId: channelIdForBlog,
+        //   channelName: channelNameForBlog,
+        //   channelDesc: channelDescForBlog,
+        //   importance: Importance.max,
+        //   priority: Priority.max,
+        // );
+        // throw Exception(error);
+        debugPrint("Error: $error");
       }
     } else {
       final data = await FirebaseFirestore.instance

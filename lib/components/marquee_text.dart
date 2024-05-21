@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:marquee/marquee.dart';
 import 'package:phone_repair_service_199/util.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class MarqueeText extends StatelessWidget {
   const MarqueeText({super.key});
@@ -35,11 +35,10 @@ class MarqueeText extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: 30,
-      child: Marquee(
-        text: text,
-        blankSpace: 50,
-        velocity: 30,
-        textScaleFactor: 1.1,
+      child: TextScroll(
+        text,
+        intervalSpaces: 10,
+        velocity: const Velocity(pixelsPerSecond: Offset(35, 0)),
       ),
     );
   }
