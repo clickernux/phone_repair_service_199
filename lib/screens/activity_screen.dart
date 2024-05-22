@@ -77,46 +77,46 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
     );
   }
 
-  void _deleteData(String id) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return FutureBuilder(
-          future: FirebaseFirestore.instance
-              .collection(Util.collectionName)
-              .doc(id)
-              .delete(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircularProgressIndicator(
-                    backgroundColor: Theme.of(context).cardColor,
-                  ),
-                ),
-              );
-            }
-            if (snapshot.hasError) {
-              return const Center(
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('Error deleting data!'),
-                ),
-              );
-            }
+  // void _deleteData(String id) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return FutureBuilder(
+  //         future: FirebaseFirestore.instance
+  //             .collection(Util.collectionName)
+  //             .doc(id)
+  //             .delete(),
+  //         builder: (context, snapshot) {
+  //           if (snapshot.connectionState == ConnectionState.waiting) {
+  //             return Center(
+  //               child: Padding(
+  //                 padding: const EdgeInsets.all(8.0),
+  //                 child: CircularProgressIndicator(
+  //                   backgroundColor: Theme.of(context).cardColor,
+  //                 ),
+  //               ),
+  //             );
+  //           }
+  //           if (snapshot.hasError) {
+  //             return const Center(
+  //               child: Padding(
+  //                 padding: EdgeInsets.all(8.0),
+  //                 child: Text('Error deleting data!'),
+  //               ),
+  //             );
+  //           }
 
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text('Done Deleting Data!'),
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
+  //           return const Center(
+  //             child: Padding(
+  //               padding: EdgeInsets.all(8.0),
+  //               child: Text('Done Deleting Data!'),
+  //             ),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   void showSnackbarMsg(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(

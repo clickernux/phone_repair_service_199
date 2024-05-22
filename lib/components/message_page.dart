@@ -76,7 +76,7 @@ class _MessagePageState extends State<MessagePage> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   Connectivity().checkConnectivity().then((value) {
-                    if (value == ConnectivityResult.none) {
+                    if (value.contains(ConnectivityResult.none)) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('No Internet Connection!'),

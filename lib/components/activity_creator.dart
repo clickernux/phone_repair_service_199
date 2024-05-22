@@ -139,7 +139,7 @@ class _ActivityCreatorState extends State<ActivityCreator> {
         suffix: IconButton(
           onPressed: () {
             Connectivity().checkConnectivity().then((value) {
-              if (value == ConnectivityResult.none) {
+              if (value.contains(ConnectivityResult.none)) {
                 return ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('No Internet Connection'),
@@ -261,7 +261,7 @@ class _ActivityCreatorState extends State<ActivityCreator> {
       if (_imgUrlList.isNotEmpty) {
         Connectivity().checkConnectivity().then(
           (value) {
-            if (value == ConnectivityResult.none) {
+            if (value.contains(ConnectivityResult.none)) {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('No Internet Connection'),
