@@ -73,7 +73,7 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
               height: 1.8,
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),
@@ -86,7 +86,7 @@ class _BlogPostScreenState extends State<BlogPostScreen> {
           child: Text(
             DateFormat('dd-MMM-yyyy').format(date),
             style: textTheme.labelSmall?.copyWith(
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),

@@ -28,7 +28,7 @@ class OperatorCard extends StatelessWidget {
               child: Text(
                 label,
                 style: textTheme.headlineMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),

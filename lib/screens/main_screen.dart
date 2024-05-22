@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
           child: Text(
             Util.appNameMM,
             style: TextStyle(
-              color: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),

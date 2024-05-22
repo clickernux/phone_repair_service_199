@@ -67,7 +67,7 @@ class BlogCard extends StatelessWidget {
               Text(
                 DateFormat('dd-MMM-yyyy').format(date),
                 style: textTheme.labelSmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ],

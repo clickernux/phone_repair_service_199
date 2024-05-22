@@ -22,7 +22,7 @@ class PageIndicator extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(length, (index) {
               final color = pageIndex == index
-                  ? Theme.of(context).colorScheme.onBackground
+                  ? Theme.of(context).colorScheme.onSurface
                   : Theme.of(context).colorScheme.onInverseSurface;
               return Padding(
                 padding: const EdgeInsets.all(4.0),

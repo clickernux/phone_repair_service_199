@@ -24,7 +24,7 @@ class UssdTile extends StatelessWidget {
               Text(
                 ussd.service,
                 style: textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               // const SizedBox(height: 8),
@@ -32,7 +32,7 @@ class UssdTile extends StatelessWidget {
               Text(
                 ussd.code,
                 style: textTheme.labelLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ],

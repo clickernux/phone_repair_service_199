@@ -37,9 +37,5 @@ class LocalNotificationService {
   }
 
   static void onDidReceiveNotificationResponse(
-      NotificationResponse details) async {
-    final String? payload = details.payload;
-
-    if (details.payload != null) {}
-  }
+      NotificationResponse details) async {}
 }
