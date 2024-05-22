@@ -39,6 +39,10 @@ class MarqueeText extends StatelessWidget {
         text,
         intervalSpaces: 10,
         velocity: const Velocity(pixelsPerSecond: Offset(35, 0)),
+        style: const TextStyle(
+          fontStyle: FontStyle.italic,
+          fontSize: 12,
+        ),
       ),
     );
   }
