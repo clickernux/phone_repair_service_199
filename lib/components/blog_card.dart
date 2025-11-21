@@ -26,7 +26,7 @@ class BlogCard extends StatelessWidget {
         InkWell(
           onTap: () {
             FirebaseAnalytics.instance
-                .logEvent(name: 'view_blog', parameters: <String, dynamic>{
+                .logEvent(name: 'view_blog', parameters: <String, Object>{
               'string_parameter': blog.title,
             });
             context.goNamed(

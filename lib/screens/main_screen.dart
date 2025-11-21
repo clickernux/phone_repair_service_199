@@ -92,11 +92,10 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'MPT',
                 onTap: () {
-                  FirebaseAnalytics.instance.logEvent(
-                      name: 'ussd_code',
-                      parameters: <String, dynamic>{
-                        'string_parameter': 'MPT',
-                      });
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'ussd_code', parameters: <String, Object>{
+                    'operator_name': 'MPT',
+                  });
                   context
                       .goNamed('ussd', pathParameters: {'operatorName': 'MPT'});
                 },
@@ -104,11 +103,10 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'ATOM',
                 onTap: () {
-                  FirebaseAnalytics.instance.logEvent(
-                      name: 'ussd_code',
-                      parameters: <String, dynamic>{
-                        'string_parameter': 'ATOM',
-                      });
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'ussd_code', parameters: <String, Object>{
+                    'operator_name': 'ATOM',
+                  });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'ATOM'});
                 },
@@ -116,11 +114,10 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'MyTel',
                 onTap: () {
-                  FirebaseAnalytics.instance.logEvent(
-                      name: 'ussd_code',
-                      parameters: <String, dynamic>{
-                        'string_parameter': 'MyTel',
-                      });
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'ussd_code', parameters: <String, Object>{
+                    'operator_name': 'MyTel',
+                  });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'MYTEL'});
                 },
@@ -128,11 +125,10 @@ class MainScreen extends StatelessWidget {
               OperatorCard(
                 label: 'Ooredoo',
                 onTap: () {
-                  FirebaseAnalytics.instance.logEvent(
-                      name: 'ussd_code',
-                      parameters: <String, dynamic>{
-                        'string_parameter': 'Ooredoo',
-                      });
+                  FirebaseAnalytics.instance
+                      .logEvent(name: 'ussd_code', parameters: <String, Object>{
+                    'operator_name': 'Ooredoo',
+                  });
                   context.goNamed('ussd',
                       pathParameters: {'operatorName': 'Ooredoo'});
                 },
